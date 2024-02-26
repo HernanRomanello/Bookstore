@@ -1,0 +1,62 @@
+.container {
+  margin-top: 50px;
+  padding: 0 20px;
+}
+
+.books-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.book {
+  width: calc(33.33% - 40px); /* Adjust as needed */
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.book h2 {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+.book p {
+  margin-bottom: 0;
+}
+
+.search-container,
+button,
+input[type="text"],
+label,
+option {
+  margin: 20px;
+  text-align: center;
+}
+
+input[type="text"] {
+  padding: 10px;
+  width: 30%;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: left;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+  color: yellow;
+}
