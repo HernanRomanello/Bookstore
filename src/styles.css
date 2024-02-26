@@ -9,3 +9,8 @@ body {
   margin: 0;
   font-family: "Quicksand", sans-serif;
 }
+
+button,
+input {
+  cursor: pointer;
+}
