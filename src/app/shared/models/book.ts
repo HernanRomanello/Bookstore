@@ -7,6 +7,11 @@ export class book {
   description?: string;
   coverImage?: string;
   rating?: number;
+  stars?: number;
   imageUrl?: string;
   pages?: number;
+  publishedDate?: string;
+  publisher?: string;
+  language?: string;
+  dimentions?: string;
 }

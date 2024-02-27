@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BooksService } from '../../services/books/books.service';
 import { AuthService } from '../../services/auth.service';
+import { book } from '../../shared/models/book';
 
 @Component({
   selector: 'app-search-books',
@@ -12,7 +13,7 @@ export class SearchBooksComponent implements OnInit {
   selectedFilter: string = 'title';
   minPrice: number = 0;
   maxPrice: number = 0;
-  books: string[] = []; // This should be an array of book objects
+  books: book[] = []; // This should be an array of book objects
 
   constructor(
     private booksservice: BooksService,
