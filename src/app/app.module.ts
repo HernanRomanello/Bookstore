@@ -9,6 +9,9 @@ import { SearchBooksComponent } from './components/search-books/search-books.com
 import { SignupComponent } from './components/signup/signup.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
+import { AdminloginComponent } from './components/Admin-Panel/adminlogin/adminlogin.component';
+import { AdminDashboardComponent } from './components/Admin-Panel/admin-dashboard/admin-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     Page404Component,
     SearchBooksComponent,
     SignupComponent,
-    SigninComponent
+    SigninComponent,
+    AdminPanelComponent,
+    AdminloginComponent,
+    AdminDashboardComponent
   ],
   imports: [
     BrowserModule,
