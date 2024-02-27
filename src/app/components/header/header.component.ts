@@ -10,6 +10,8 @@ import { AuthService } from '../../services/auth.service';
 export class HeaderComponent {
   constructor(public authService: AuthService, private router: Router) {}
 
+  mainWebPic = 'assets/images/web-images/4.jpg';
+
   ngOnInit(): void {}
 
   navugateTo(path: string) {
