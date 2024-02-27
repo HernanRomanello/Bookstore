@@ -12,10 +12,34 @@
 </section>
 
 <div class="books-list">
-  <div *ngFor="let book of books" class="book">
+  <div
+    *ngFor="let book of books.slice(booksFirstIndex, booksLastIndex)"
+    class="book"
+  >
     <img class="book-img" src="{{ book.coverImage }}" alt="" />
     <h2 class="title">{{ book.title }}</h2>
     <p class="author">By {{ book.author }}</p>
     <p class="price">{{ book.price | currency }}</p>
   </div>
 </div>
+
+<section class="search-container">
+  <div class="text">Pages</div>
+  <button
+    *ngIf="prevButtonActive"
+    class="navigation-button"
+    (click)="prevPage()"
+  >
+    Prev
+  </button>
+  <button class="navigation-button">1</button>
+  <button class="navigation-button">2</button>
+  <button class="navigation-button">3</button>
+  <button
+    *ngIf="nextButtonActive"
+    class="navigation-button"
+    (click)="nextPage()"
+  >
+    Next
+  </button>
+</section>
