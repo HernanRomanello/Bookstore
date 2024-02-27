@@ -32,5 +32,6 @@ import { ProfileComponent } from './components/profile/profile.component';
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],
+  exports: [],
 })
 export class AppModule {}

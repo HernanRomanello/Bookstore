@@ -25,6 +25,11 @@
   <li *ngFor="let book of books">
     <a href="">
       <img class="book-img" src="{{ book.coverImage }}" alt="" />
+      <div class="title">{{ book.title }}</div>
+      <div class="author">By {{ book.author }}</div>
+      <div class="price">
+        <span> {{ book.price | currency }}</span>
+      </div>
     </a>
   </li>
 </ul>
