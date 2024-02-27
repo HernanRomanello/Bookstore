@@ -3,6 +3,7 @@ import { BooksService } from '../../services/books/books.service';
 import { AuthService } from '../../services/auth.service';
 import { book } from '../../shared/models/book';
 import { last } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-search-books',
@@ -22,7 +23,8 @@ export class SearchBooksComponent implements OnInit {
 
   constructor(
     private booksservice: BooksService,
-    private authService: AuthService
+    private authService: AuthService,
+    private route: ActivatedRoute
   ) {}
 
   hideButtons() {
@@ -40,8 +42,22 @@ export class SearchBooksComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.addBooks(); // Call the function to add books when the component initializes
-    this.books = this.booksservice.getAllBooks();
+    this.route.params.subscribe((params) => {
+      if (params['searchTerm']) {
+        this.books = this.booksservice.getAllBooks().filter((book) => {
+          return book.title
+            .toLowerCase()
+            .includes(
+              params['searchTerm']
+                .toLowerCase()
+                .trim()
+                .includes(params['searchTerm'].toLowerCase().trim())
+            );
+        });
+      } else {
+        this.books = this.booksservice.getAllBooks();
+      }
+    });
     this.hideButtons();
   }
 

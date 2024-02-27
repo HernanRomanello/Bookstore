@@ -17,6 +17,11 @@ const routes: Routes = [
     title: 'Search Books',
   },
   {
+    path: 'search/:searchTerm',
+    component: SearchBooksComponent,
+    title: 'Search Books',
+  },
+  {
     path: 'signin',
     component: SigninComponent,
     title: 'Sign in',

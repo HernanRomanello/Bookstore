@@ -22,15 +22,28 @@
   align-items: center;
 }
 
-input[type="text"],
 select,
 label,
-button,
-input[type="number"] {
+button {
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+input[type="number"],
+input[type="text"] {
+  padding: 10px;
+  display: flex;
+  flex-grow: inherit;
+  /* font-size: 16px; */
+  /* border: 1px solid #ccc; */
+  border-radius: 4px;
+  /* width: 100%; */
+  /* margin: 10px 0; */
+}
+
+label {
   color: aliceblue;
 }
 
@@ -47,6 +60,7 @@ button {
   height: 200px;
   object-fit: cover;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 .title {
