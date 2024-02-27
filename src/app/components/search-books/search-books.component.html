@@ -1,22 +1,17 @@
 <section class="search-container">
-  <input
-    type="text"
-    id="searchInput"
-    placeholder="Search books..."
-    [(ngModel)]="searchQuery"
-  />
-  <select id="filterDropdown" [(ngModel)]="selectedFilter">
+  <input type="text" id="searchInput" placeholder="Search books..." />
+  <select id="filterDropdown">
     <option value="title">Title</option>
     <option value="author">Author</option>
   </select>
   <label for="minPrice">Min Price:</label>
-  <input type="number" id="minPrice" min="0" step="1" [(ngModel)]="minPrice" />
+  <input type="number" id="minPrice" min="0" step="1" />
   <label for="maxPrice">Max Price:</label>
-  <input type="number" id="maxPrice" min="0" step="1" [(ngModel)]="maxPrice" />
+  <input type="number" id="maxPrice" min="0" step="1" />
   <button (click)="searchBooks()">Search</button>
 </section>
 
-<div class="container">
+<!-- <div class="container">
   <div class="books-list">
     <div class="book" *ngFor="let book of books">
       <h2>{{ book.title }}</h2>
@@ -24,4 +19,12 @@
       <p>Price: ${{ book.price }}</p>
     </div>
   </div>
-</div>
+</div> -->
+
+<ul>
+  <li *ngFor="let book of books">
+    <a href="">
+      <img class="book-img" src="{{ book }}" alt="" />
+    </a>
+  </li>
+</ul>

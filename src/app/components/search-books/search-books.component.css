@@ -60,3 +60,33 @@ button:hover {
   background-color: #45a049;
   color: yellow;
 }
+
+.book-img {
+  width: 10rem;
+  height: 15rem;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+li a {
+  height: fit-content;
+  width: fit-content;
+  padding: 20px;
+  border: 1px solid whitesmoke;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+li:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BooksService } from '../../services/books/books.service';
 
 @Component({
   selector: 'app-search-books',
@@ -10,12 +11,13 @@ export class SearchBooksComponent implements OnInit {
   selectedFilter: string = 'title';
   minPrice: number = 0;
   maxPrice: number = 0;
-  books: any[] = []; // This should be an array of book objects
+  books: string[] = []; // This should be an array of book objects
 
-  constructor() {}
+  constructor(private booksservice: BooksService) {}
 
   ngOnInit(): void {
-    this.addBooks(); // Call the function to add books when the component initializes
+    // this.addBooks(); // Call the function to add books when the component initializes
+    this.books = this.booksservice.getAllBooks();
   }
 
   searchBooks() {
