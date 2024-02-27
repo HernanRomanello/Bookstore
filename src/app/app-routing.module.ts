@@ -7,6 +7,8 @@ import { Page404Component } from './components/page-404/page-404.component';
 import { adminAuthGuard } from './Guards/admin-auth.guard';
 import { AdminloginComponent } from './components/Admin-Panel/adminlogin/adminlogin.component';
 import { AdminDashboardComponent } from './components/Admin-Panel/admin-dashboard/admin-dashboard.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { userAuthGuard } from './Guards/user-auth.guard';
 
 const routes: Routes = [
   {
@@ -33,6 +35,12 @@ const routes: Routes = [
       { path: '', component: AdminloginComponent }, // Admin login page
       { path: 'dashboard', component: AdminDashboardComponent }, // Admin dashboard
     ],
+  },
+  {
+    path: 'profile',
+    canActivate: [userAuthGuard], // Protect admin routes
+    component: ProfileComponent,
+    title: 'Profile',
   },
 
   {

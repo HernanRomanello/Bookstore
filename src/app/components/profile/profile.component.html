@@ -1,0 +1,80 @@
+<form [formGroup]="editForm" (ngSubmit)="saveChanges()">
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input
+      id="name"
+      type="text"
+      class="form-control"
+      formControlName="name"
+      placeholder="Enter Name"
+    />
+    <div
+      *ngIf="editForm.get('name')?.invalid && editForm.get('name')?.touched"
+      class="error-message"
+    >
+      Please enter a Name
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="lastname">Last Name:</label>
+    <input
+      id="lastname"
+      type="text"
+      class="form-control"
+      formControlName="lastname"
+      placeholder="Enter Last Name"
+    />
+    <div
+      *ngIf="
+        editForm.get('lastname')?.invalid && editForm.get('lastname')?.touched
+      "
+      class="error-message"
+    >
+      Please enter a Last Name
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="username">Username:</label>
+    <input
+      id="username"
+      type="text"
+      class="form-control"
+      formControlName="username"
+      placeholder="Enter username"
+    />
+    <div
+      *ngIf="
+        editForm.get('username')?.invalid && editForm.get('username')?.touched
+      "
+      class="error-message"
+    >
+      Please enter a username
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password:</label>
+    <input
+      id="password"
+      type="password"
+      class="form-control"
+      formControlName="password"
+      placeholder="Enter password"
+    />
+    <div
+      *ngIf="
+            editForm.get('password')?.errors?.['passwordError'] &&
+            editForm.get('password')?.touched
+          "
+      class="error-message"
+    >
+      {{ editForm.get("password")?.errors?.['passwordError'] }}
+    </div>
+  </div>
+
+  <button class="submit-button" type="submit" [disabled]="editForm.invalid">
+    Submit
+  </button>
+</form>

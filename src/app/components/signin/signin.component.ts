@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-signin',
@@ -8,19 +9,30 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './signin.component.css',
 })
 export class SigninComponent implements OnInit {
-  constructor(private formbuilder: FormBuilder) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private authService: AuthService,
+    private formbuilder: FormBuilder
+  ) {}
 
   loginForm!: FormGroup;
 
   ngOnInit(): void {
     this.loginForm = this.formbuilder.group({
-      username: this.formbuilder.control('', Validators.required),
+      email: this.formbuilder.control('', Validators.required),
       password: this.formbuilder.control('', Validators.required),
     });
   }
 
   handleSubmit() {
     // Handle form submission logic here
-    console.log('Form Submitted!');
+    const email: string = this.loginForm.get('email')?.value;
+    const password: string = this.loginForm.get('password')?.value;
+
+    const loggedIn = this.authService.login(email, password);
+    if (loggedIn) {
+      this.router.navigate(['/']);
+    }
   }
 }

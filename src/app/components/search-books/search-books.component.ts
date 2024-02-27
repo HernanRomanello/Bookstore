@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BooksService } from '../../services/books/books.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-search-books',
@@ -13,7 +14,10 @@ export class SearchBooksComponent implements OnInit {
   maxPrice: number = 0;
   books: string[] = []; // This should be an array of book objects
 
-  constructor(private booksservice: BooksService) {}
+  constructor(
+    private booksservice: BooksService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     // this.addBooks(); // Call the function to add books when the component initializes

@@ -11,8 +11,19 @@
     alt=""
   />
 
-  <button class="button" (click)="navugateTo('/signin')">Sign in</button>
-  <button class="button" (click)="navugateTo('/signup')">Sing up</button>
+  @if(authService.user) {
+  <div>
+    {{ authService.user.name }}
+  </div>
+  <button class="button" (click)="navugateTo('/cart')">Cart</button>
+  <button class="button" (click)="navugateTo('/profile')">Profile</button>
+  <button class="button" (click)="authService.logOut()">Sign out</button>
+  }@else {
+  <div>
+    <button class="button" (click)="navugateTo('/signin')">Sign in</button>
+    <button class="button" (click)="navugateTo('/signup')">Sing up</button>
+  </div>
+  }
 </header>
 <div class="main-pic">
   <img

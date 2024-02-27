@@ -5,8 +5,10 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import Validator from 'validator';
+import { AuthService } from '../../services/auth.service';
+import { User } from '../../shared/models/user';
 
 @Component({
   selector: 'app-signup',
@@ -16,6 +18,8 @@ import Validator from 'validator';
 export class SignupComponent {
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
+    private authService: AuthService,
     private formbuilder: FormBuilder
   ) {}
 
@@ -53,12 +57,22 @@ export class SignupComponent {
   }
 
   handleSubmit() {
-    // onst username: string = this.signupForm.get('username')?.value;
-    // const password: string = this.signupForm.get('password')?.value;
-    // this.authservice
-    //   .login({ username, password })
-    //   .subscribe((response: any): void => {
-    //     console.log(response);
-    //   });
+    const email: string = this.signupForm.get('email')?.value;
+    const password: string = this.signupForm.get('password')?.value;
+    const username: string = this.signupForm.get('username')?.value;
+    const name: string = this.signupForm.get('name')?.value;
+    const lastName: string = this.signupForm.get('lastname')?.value;
+
+    const user: User = {
+      id: Math.random().toString(36).substr(2, 9),
+      email,
+      password,
+      username,
+      name,
+      lastName,
+    };
+    if (this.authService.register(user)) {
+      this.router.navigate(['/signin']);
+    }
   }
 }
