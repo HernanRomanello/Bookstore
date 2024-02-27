@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { BooksService } from '../../services/books/books.service';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,11 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './header.component.css',
 })
 export class HeaderComponent {
-  constructor(public authService: AuthService, private router: Router) {}
+  constructor(
+    public authService: AuthService,
+    private router: Router,
+    booksService: BooksService
+  ) {}
 
   mainWebPic = 'assets/images/web-images/4.jpg';
 

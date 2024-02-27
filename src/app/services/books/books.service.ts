@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { book } from '../../shared/models/book';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BooksService {
-  constructor() {}
+  constructor(private router: Router) {}
 
   getAllBooks(): book[] {
     return [

@@ -3,7 +3,8 @@ import { BooksService } from '../../services/books/books.service';
 import { AuthService } from '../../services/auth.service';
 import { book } from '../../shared/models/book';
 import { last } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router'; // Import the ActivatedRoute and Router classes
 
 @Component({
   selector: 'app-search-books',
@@ -24,7 +25,8 @@ export class SearchBooksComponent implements OnInit {
   constructor(
     private booksservice: BooksService,
     private authService: AuthService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   hideButtons() {
@@ -62,10 +64,17 @@ export class SearchBooksComponent implements OnInit {
     });
   }
 
-  searchBooks() {
-    // Implement search functionality here
-    // You can filter books based on the search query, selected filter, minPrice, and maxPrice
-    // Update the this.books array with the filtered results
+  searchBooks(
+    searchQuery: string,
+    selectedFilter: string,
+    minPrice: number,
+    maxPrice: number
+  ) {
+    if (selectedFilter === 'title') {
+      this.router.navigate(['/searchtitle', searchQuery]);
+    } else {
+      this.router.navigate(['/searchauthor', searchQuery]);
+    }
   }
 
   prevPage() {
@@ -79,8 +88,9 @@ export class SearchBooksComponent implements OnInit {
     this.hideButtons();
   }
 
-  addBooks() {
-    // Generate or fetch your books data here and update this.books array
-    // This function should initialize this.books with the list of books
+  goToPage(pageNumber: number) {
+    this.booksLastIndex = pageNumber * 12;
+    this.booksFirstIndex = this.booksLastIndex - 12;
+    this.hideButtons();
   }
 }

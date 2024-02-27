@@ -1,18 +1,35 @@
 <section class="search-container">
-  <input type="text" id="searchInput" placeholder="Search books..." />
-  <select id="filterDropdown">
+  <input
+    type="text"
+    id="searchInput"
+    placeholder="Search books..."
+    #searchQuery
+  />
+
+  <select id="filterDropdown" #filter>
     <option class="option" value="title">Title</option>
     <option class="option" value="author">Author</option>
   </select>
   <div class="price-search">
     <label for="minPrice">Min Price:</label>
-    <input type="number" id="minPrice" min="0" step="1" />
+    <input type="number" id="minPrice" min="0" step="1" #minPriceInput />
   </div>
   <div class="price-search">
     <label for="maxPrice">Max Price:</label>
-    <input type="number" id="maxPrice" min="0" step="1" />
+    <input type="number" id="maxPrice" min="0" step="1" #maxPriceInput />
   </div>
-  <button (click)="searchBooks()">Search</button>
+  <button
+    (click)="
+      searchBooks(
+        searchQuery.value,
+        filter.value,
+        +minPriceInput.value,
+        +maxPriceInput.value
+      )
+    "
+  >
+    Search
+  </button>
 </section>
 
 <div class="books-list">
@@ -36,9 +53,9 @@
   >
     Prev
   </button>
-  <button class="navigation-button">1</button>
-  <button class="navigation-button">2</button>
-  <button class="navigation-button">3</button>
+  <button class="navigation-button" (click)="goToPage(1)">1</button>
+  <button class="navigation-button" (click)="goToPage(2)">2</button>
+  <button class="navigation-button" (click)="goToPage(3)">3</button>
   <button
     *ngIf="nextButtonActive"
     class="navigation-button"
