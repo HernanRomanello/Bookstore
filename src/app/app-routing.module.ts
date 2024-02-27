@@ -17,7 +17,12 @@ const routes: Routes = [
     title: 'Search Books',
   },
   {
-    path: 'search/:searchTerm',
+    path: 'searchtitle/:title',
+    component: SearchBooksComponent,
+    title: 'Search Books',
+  },
+  {
+    path: 'searchauthor/:author',
     component: SearchBooksComponent,
     title: 'Search Books',
   },

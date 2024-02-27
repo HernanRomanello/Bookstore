@@ -43,22 +43,23 @@ export class SearchBooksComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      if (params['searchTerm']) {
-        this.books = this.booksservice.getAllBooks().filter((book) => {
-          return book.title
-            .toLowerCase()
-            .includes(
-              params['searchTerm']
-                .toLowerCase()
-                .trim()
-                .includes(params['searchTerm'].toLowerCase().trim())
-            );
-        });
-      } else {
-        this.books = this.booksservice.getAllBooks();
-      }
+      this.route.params.subscribe((params) => {
+        if (params['title']) {
+          const searchTerm = params['title'].toLowerCase(); // Convert to lowercase for case-insensitive matching
+          this.books = this.booksservice.getAllBooks().filter((book) => {
+            return book.title.toLowerCase().includes(searchTerm);
+          });
+        } else if (params['author']) {
+          const searchAuthor = params['author'].toLowerCase(); // Convert to lowercase for case-insensitive matching
+          this.books = this.booksservice.getAllBooks().filter((book) => {
+            return book.author.toLowerCase().includes(searchAuthor);
+          });
+        } else {
+          this.books = this.booksservice.getAllBooks();
+        }
+        this.hideButtons(); // Ensure that the hideButtons function is called after updating the books array
+      });
     });
-    this.hideButtons();
   }
 
   searchBooks() {
