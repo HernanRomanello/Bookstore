@@ -11,25 +11,11 @@
   <button (click)="searchBooks()">Search</button>
 </section>
 
-<!-- <div class="container">
-  <div class="books-list">
-    <div class="book" *ngFor="let book of books">
-      <h2>{{ book.title }}</h2>
-      <p>Author: {{ book.author }}</p>
-      <p>Price: ${{ book.price }}</p>
-    </div>
+<div class="books-list">
+  <div *ngFor="let book of books" class="book">
+    <img class="book-img" src="{{ book.coverImage }}" alt="" />
+    <h2 class="title">{{ book.title }}</h2>
+    <p class="author">By {{ book.author }}</p>
+    <p class="price">{{ book.price | currency }}</p>
   </div>
-</div> -->
-
-<ul>
-  <li *ngFor="let book of books">
-    <a href="">
-      <img class="book-img" src="{{ book.coverImage }}" alt="" />
-      <div class="title">{{ book.title }}</div>
-      <div class="author">By {{ book.author }}</div>
-      <div class="price">
-        <span> {{ book.price | currency }}</span>
-      </div>
-    </a>
-  </li>
-</ul>
+</div>
