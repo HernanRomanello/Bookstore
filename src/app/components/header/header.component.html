@@ -1,19 +1,19 @@
 <header class="header">
-  <img
+  <!-- <img
     class="cart-pic"
     src="./images/serge-kutuzov-HCBmCsaF0GY-unsplash.jpg"
     alt=""
-  />
-  <h1 class="title">Book store</h1>
-  <img
+  /> -->
+  <h1 class="title"></h1>
+  <!-- <img
     class="logo-pic"
     src="./images/serge-kutuzov-HCBmCsaF0GY-unsplash.jpg"
     alt=""
-  />
+  /> -->
 
   @if(authService.user) {
-  <div>
-    {{ authService.user.name }}
+  <div class="username">
+    {{ authService.user.name }} {{ authService.user.lastName }}
   </div>
   <button class="button" (click)="navugateTo('/cart')">Cart</button>
   <button class="button" (click)="navugateTo('/profile')">Profile</button>
