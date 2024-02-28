@@ -80,16 +80,19 @@ export class SearchBooksComponent implements OnInit {
     this.booksFirstIndex -= 12;
     this.booksLastIndex -= 12;
     this.hideButtons();
+    window.scrollTo(0, 0);
   }
   nextPage() {
     this.booksFirstIndex += 12;
     this.booksLastIndex += 12;
     this.hideButtons();
+    window.scrollTo(0, 0);
   }
 
   goToPage(pageNumber: number) {
     this.booksLastIndex = pageNumber * 12;
     this.booksFirstIndex = this.booksLastIndex - 12;
     this.hideButtons();
+    window.scrollTo(0, 0);
   }
 }
