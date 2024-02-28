@@ -1,13 +1,17 @@
 <div class="book-details">
-  <img
-    class="book-img"
-    [src]="book.coverImage"
-    [alt]="book.title + ' Cover Image'"
-  />
-  <h2 class="title">{{ book.title }}</h2>
-  <p class="author">By {{ book.author }}</p>
-  <p class="price">{{ book.price | currency }}</p>
-  <p class="description">{{ book.summary }}</p>
-  <button>Add to Cart</button>
-  <button>Buy Now</button>
+  <div>
+    <img
+      class="book-img"
+      [src]="book.coverImage"
+      [alt]="book.title + ' Cover Image'"
+    />
+  </div>
+  <div>
+    <h2 class="title">{{ book.title }}</h2>
+    <p class="author">By {{ book.author }}</p>
+    <p class="price">{{ book.price | currency }}</p>
+    <p class="description">{{ book.summary }}</p>
+    <button>Add to Cart</button>
+    <button>Buy Now</button>
+  </div>
 </div>
