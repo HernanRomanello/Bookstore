@@ -1,5 +1,13 @@
 <section class="search-container">
   <input
+    (keyup.enter)="
+      searchBooks(
+        searchQuery.value,
+        filter.value,
+        +minPriceInput.value,
+        +maxPriceInput.value
+      )
+    "
     type="text"
     id="searchInput"
     placeholder="Search books..."
