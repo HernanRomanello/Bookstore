@@ -1,1 +1,8 @@
-<p>book-page works!</p>
+<div class="book">
+  <img class="book-img" [src]="book.coverImage" [alt]="" />
+  <h2 class="title">{{ book.title }}</h2>
+  <p class="author">By {{ book.author }}</p>
+  <p class="price">{{ book.price | currency }}</p>
+  <button>Add to Cart</button>
+  <button>Buy Now</button>
+</div>

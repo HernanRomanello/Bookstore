@@ -8,6 +8,10 @@ import { Router } from '@angular/router';
 export class BooksService {
   constructor(private router: Router) {}
 
+  getBookById(id: number): book {
+    return this.getAllBooks().find((book) => book.id === id)!;
+  }
+
   getAllBooks(): book[] {
     return [
       {
