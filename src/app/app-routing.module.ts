@@ -10,6 +10,7 @@ import { AdminDashboardComponent } from './components/Admin-Panel/admin-dashboar
 import { ProfileComponent } from './components/profile/profile.component';
 import { userAuthGuard } from './Guards/user-auth.guard';
 import { BookPageComponent } from './components/book-page/book-page.component';
+import { CartPageComponent } from './components/cart-page/cart-page.component';
 
 const routes: Routes = [
   {
@@ -40,6 +41,13 @@ const routes: Routes = [
     title: 'Sign up',
     // resolve: { user: usersResolver },
   },
+
+  {
+    path: 'cart',
+    component: CartPageComponent,
+    title: 'Cart',
+  },
+
   {
     path: 'admin',
     canActivate: [adminAuthGuard], // Protect admin routes

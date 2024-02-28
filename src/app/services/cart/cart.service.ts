@@ -8,7 +8,6 @@ import { CartItem } from '../../shared/models/cartItem';
 })
 export class CartService {
   constructor(private cart: Cart) {}
-
   addToCart(book: book): void {
     const cartItem = this.cart.Items.find((item) => item.book.id === book.id);
     if (cartItem) {
@@ -17,17 +16,14 @@ export class CartService {
     }
     this.cart.Items.push(new CartItem(book));
   }
-
   removeFromCart(bookId: number): void {
     this.cart.Items = this.cart.Items.filter((item) => item.book.id !== bookId);
   }
-
   changeQuantity(bookId: number, quantity: number): void {
     const cartItem = this.cart.Items.find((item) => item.book.id === bookId);
     if (!cartItem) return;
     cartItem.quantity = quantity;
   }
-
   getCart(): Cart {
     return this.cart;
   }
