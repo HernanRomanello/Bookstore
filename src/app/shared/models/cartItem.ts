@@ -1,7 +1,7 @@
 import { book } from './book';
 
 export class CartItem {
-  constructor(book: book, quantity: number) {
+  constructor(book: book) {
     this.book = book;
     this.price;
   }

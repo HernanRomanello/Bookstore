@@ -17,6 +17,7 @@ import { AdminloginComponent } from './components/Admin-Panel/adminlogin/adminlo
 import { AdminDashboardComponent } from './components/Admin-Panel/admin-dashboard/admin-dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { BookPageComponent } from './components/book-page/book-page.component';
+import { CartPageComponent } from './components/cart-page/cart-page.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { BookPageComponent } from './components/book-page/book-page.component';
     AdminDashboardComponent,
     ProfileComponent,
     BookPageComponent,
+    CartPageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [provideClientHydration()],
