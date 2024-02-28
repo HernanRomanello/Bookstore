@@ -9,6 +9,7 @@ import { AdminloginComponent } from './components/Admin-Panel/adminlogin/adminlo
 import { AdminDashboardComponent } from './components/Admin-Panel/admin-dashboard/admin-dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { userAuthGuard } from './Guards/user-auth.guard';
+import { BookPageComponent } from './components/book-page/book-page.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,7 @@ const routes: Routes = [
     component: SearchBooksComponent,
     title: 'Search Books',
   },
+  { path: 'book/:id', component: BookPageComponent, title: 'Book Details' },
   {
     path: 'searchauthor/:author',
     component: SearchBooksComponent,
