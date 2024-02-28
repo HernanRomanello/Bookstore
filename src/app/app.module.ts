@@ -16,6 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminloginComponent } from './components/Admin-Panel/adminlogin/adminlogin.component';
 import { AdminDashboardComponent } from './components/Admin-Panel/admin-dashboard/admin-dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { BookPageComponent } from './components/book-page/book-page.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     AdminloginComponent,
     AdminDashboardComponent,
     ProfileComponent,
+    BookPageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [provideClientHydration()],
