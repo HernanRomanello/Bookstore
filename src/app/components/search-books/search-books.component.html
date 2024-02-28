@@ -53,9 +53,9 @@
   >
     Prev
   </button>
-  <button class="navigation-button" (click)="goToPage(1)">1</button>
-  <button class="navigation-button" (click)="goToPage(2)">2</button>
-  <button class="navigation-button" (click)="goToPage(3)">3</button>
+  <button class="navigation-button" (click)="goToPage(+1)">1</button>
+  <button class="navigation-button" (click)="goToPage(+2)">2</button>
+  <button class="navigation-button" (click)="goToPage(+3)">3</button>
   <button
     *ngIf="nextButtonActive"
     class="navigation-button"

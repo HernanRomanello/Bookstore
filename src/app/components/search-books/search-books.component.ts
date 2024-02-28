@@ -4,7 +4,6 @@ import { AuthService } from '../../services/auth.service';
 import { book } from '../../shared/models/book';
 import { last } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ActivatedRoute, Router } from '@angular/router'; // Import the ActivatedRoute and Router classes
 
 @Component({
   selector: 'app-search-books',
