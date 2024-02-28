@@ -14,4 +14,5 @@ export class book {
   publisher?: string;
   language?: string;
   dimentions?: string;
+  summary?: string;
 }

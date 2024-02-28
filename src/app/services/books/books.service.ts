@@ -27,6 +27,8 @@ export class BooksService {
         dimentions: '6.4 x 1.2 x 9.6 inches',
         stars: 4,
         rating: 157,
+        summary:
+          'In her book “Mostly What God Does,” Savannah Guthrie delves into the complexity of faith and how it affects resiliency and personal development. Guthrie explores the nuances of religion, skepticism, and the persistent force of hope via a variety of poignant experiences and musings.',
       },
 
       {
