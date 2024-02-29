@@ -7,7 +7,10 @@ import { CartItem } from '../../shared/models/cartItem';
   providedIn: 'root',
 })
 export class CartService {
-  constructor(private cart: Cart) {}
+  cart: Cart = new Cart();
+
+  constructor() {}
+
   addToCart(book: book): void {
     const cartItem = this.cart.Items.find((item) => item.book.id === book.id);
     if (cartItem) {

@@ -39,10 +39,6 @@ export class SignupComponent {
         Validators.email,
       ]),
     });
-
-    // this.route.data.subscribe((data) => {
-    //   console.log(data);
-    // });
   }
   passwordValidator(control: AbstractControl): Validators | null {
     const password: string = control.value;

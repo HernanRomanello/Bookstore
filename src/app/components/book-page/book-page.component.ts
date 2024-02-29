@@ -15,7 +15,7 @@ export class BookPageComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private bookService: BooksService,
-    // private cartService: CartService,
+    private cartService: CartService,
     private router: Router
   ) {
     this.route.params.subscribe((params) => {
@@ -32,6 +32,7 @@ export class BookPageComponent implements OnInit {
   addToCart() {
     // this.cartService.addToCart(this.book);
     // this.cartService.addToCart(this.book);
-    this.router.navigateByUrl('/cart');
+    // this.router.navigateByUrl('/cart');
+    this.router.navigate(['/cart']);
   }
 }
