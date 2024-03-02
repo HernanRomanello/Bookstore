@@ -11,7 +11,7 @@
     <p class="author">By {{ book.author }}</p>
     <p class="price">{{ book.price | currency }}</p>
     <p class="description">{{ book.summary }}</p>
-    <button>Add to Cart</button>
-    <button (click)="addToCart()">Buy Now</button>
+    <button (click)="addToCart(false)">Add to Cart</button>
+    <button (click)="addToCart(true)">Buy Now</button>
   </div>
 </div>

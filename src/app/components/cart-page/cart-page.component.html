@@ -9,7 +9,7 @@
       >
     </div>
     <div>
-      <label for="quantitySelect">Amount: </label>
+      <label for="quantitySelect">Quantity : </label>
       <input
         type="number"
         id="quantitySelect"
@@ -21,5 +21,16 @@
         (change)="changeQuantity(cartItem, +quantityInput.value)"
       />
     </div>
+    <div>
+      <p>{{ cartItem.book.price * +quantityInput.value | currency }}</p>
+    </div>
+    <div>
+      <button (click)="removeFromCart(cartItem)">Remove</button>
+    </div>
   </li>
 </ul>
+
+<div class="checkout">
+  <div class="books-count">{{ cart.Items.length }}</div>
+  <div class="total-price">{{ cart.totalPrice.toFixed(2) | currency }}</div>
+</div>

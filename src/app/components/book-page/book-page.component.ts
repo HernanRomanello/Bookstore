@@ -3,6 +3,7 @@ import { book } from '../../shared/models/book';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BooksService } from '../../services/books/books.service';
 import { CartService } from '../../services/cart/cart.service';
+import { CartItem } from '../../shared/models/cartItem';
 
 @Component({
   selector: 'app-book-page',
@@ -29,8 +30,11 @@ export class BookPageComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  addToCart() {
+  addToCart(navigateToCart: boolean) {
     this.cartService.addToCart(this.book);
-    this.router.navigate(['/cart']);
+    if (navigateToCart) {
+      this.router.navigate(['/cart']);
+    } else {
+    }
   }
 }
