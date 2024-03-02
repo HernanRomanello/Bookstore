@@ -1,36 +1,40 @@
-<ul>
-  <li *ngFor="let cartItem of cart.Items">
-    <div>
-      <img [src]="cartItem.book.coverImage" [alt]="cartItem.book.title" />
-    </div>
-    <div>
-      <a routerLink="/book/{{ cartItem.book.id }}"
-        ><h2>{{ cartItem.book.title }}</h2></a
-      >
-    </div>
-    <div>
-      <label for="quantitySelect">Quantity : </label>
-      <input
-        type="number"
-        id="quantitySelect"
-        min="1"
-        step="1"
-        [value]="1"
-        #quantityInput
-        name=""
-        (change)="changeQuantity(cartItem, +quantityInput.value)"
-      />
-    </div>
-    <div>
-      <p>{{ cartItem.book.price * +quantityInput.value | currency }}</p>
-    </div>
-    <div>
-      <button (click)="removeFromCart(cartItem)">Remove</button>
-    </div>
-  </li>
-</ul>
+<div class="container">
+  <ul>
+    <li *ngFor="let cartItem of cart.Items">
+      <div>
+        <img [src]="cartItem.book.coverImage" [alt]="cartItem.book.title" />
+      </div>
+      <div>
+        <a routerLink="/book/{{ cartItem.book.id }}"
+          ><h2>{{ cartItem.book.title }}</h2></a
+        >
+      </div>
+      <div>
+        <label for="quantitySelect">Quantity : </label>
+        <input
+          type="number"
+          id="quantitySelect"
+          min="1"
+          step="1"
+          [value]="1"
+          #quantityInput
+          name=""
+          (change)="changeQuantity(cartItem, +quantityInput.value)"
+        />
+      </div>
+      <div>
+        <p>{{ cartItem.book.price * +quantityInput.value | currency }}</p>
+      </div>
+      <div>
+        <button class="remove-button" (click)="removeFromCart(cartItem)">
+          Remove
+        </button>
+      </div>
+    </li>
+  </ul>
 
-<div class="checkout">
-  <div class="books-count">{{ cart.Items.length }}</div>
-  <div class="total-price">{{ cart.totalPrice.toFixed(2) | currency }}</div>
+  <div class="checkout">
+    <div class="books-count">{{ cart.Items.length }}</div>
+    <div class="total-price">{{ cart.totalPrice.toFixed(2) | currency }}</div>
+  </div>
 </div>
