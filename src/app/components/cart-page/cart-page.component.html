@@ -8,5 +8,18 @@
         ><h2>{{ cartItem.book.title }}</h2></a
       >
     </div>
+    <div>
+      <label for="quantitySelect">Amount: </label>
+      <input
+        type="number"
+        id="quantitySelect"
+        min="1"
+        step="1"
+        [value]="1"
+        #quantityInput
+        name=""
+        (change)="changeQuantity(cartItem, +quantityInput.value)"
+      />
+    </div>
   </li>
 </ul>
