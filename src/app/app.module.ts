@@ -18,6 +18,11 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { BookPageComponent } from './components/book-page/book-page.component';
 import { CartPageComponent } from './components/cart-page/cart-page.component';
 import { CartService } from './services/cart/cart.service';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { getDatabase, provideDatabase } from '@angular/fire/database';
+import { getStorage, provideStorage } from '@angular/fire/storage';
+import { environment } from '../environments/environment.development';
 
 @NgModule({
   declarations: [
@@ -33,7 +38,16 @@ import { CartService } from './services/cart/cart.service';
     BookPageComponent,
     CartPageComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideAuth(() => getAuth()),
+    provideDatabase(() => getDatabase()),
+    provideStorage(() => getStorage()),
+  ],
   providers: [provideClientHydration(), CartService],
   bootstrap: [AppComponent],
   exports: [],

@@ -52,7 +52,7 @@ export class SignupComponent {
       : { passwordError: 'Password is not strong enough' };
   }
 
-  handleSubmit() {
+  async handleSubmit() {
     const email: string = this.signupForm.get('email')?.value;
     const password: string = this.signupForm.get('password')?.value;
     const username: string = this.signupForm.get('username')?.value;
@@ -60,15 +60,15 @@ export class SignupComponent {
     const lastName: string = this.signupForm.get('lastname')?.value;
 
     const user: User = {
-      id: Math.random().toString(36).substr(2, 9),
+      id: '',
       email,
-      password,
       username,
       name,
+      isAdmin: false,
       lastName,
     };
-    if (this.authService.register(user)) {
-      this.router.navigate(['/signin']);
+    if (await this.authService.register(user, password)) {
+      this.router.navigate(['/']);
     }
   }
 }

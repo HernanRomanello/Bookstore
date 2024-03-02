@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:angular-Bookstore-Project": "node dist/angular-bookstore-project/server/server.mjs"
+    "serve:ssr:angular-bookstore-project": "node dist/angular-bookstore-project/server/server.mjs"
   },
   "private": true,
   "dependencies": {
@@ -15,6 +15,7 @@
     "@angular/common": "^17.2.0",
     "@angular/compiler": "^17.2.0",
     "@angular/core": "^17.2.0",
+    "@angular/fire": "^17.0.1",
     "@angular/forms": "^17.2.0",
     "@angular/platform-browser": "^17.2.0",
     "@angular/platform-browser-dynamic": "^17.2.0",
@@ -22,7 +23,6 @@
     "@angular/router": "^17.2.0",
     "@angular/ssr": "^17.2.1",
     "express": "^4.18.2",
-    "ng-starrating": "^1.0.20",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "validator": "^13.11.0",

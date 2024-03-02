@@ -25,12 +25,12 @@ export class SigninComponent implements OnInit {
     });
   }
 
-  handleSubmit() {
+  async handleSubmit() {
     // Handle form submission logic here
     const email: string = this.loginForm.get('email')?.value;
     const password: string = this.loginForm.get('password')?.value;
 
-    const loggedIn = this.authService.login(email, password);
+    const loggedIn = await this.authService.login(email, password);
     if (loggedIn) {
       this.router.navigate(['/']);
     }

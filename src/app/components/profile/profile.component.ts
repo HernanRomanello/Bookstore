@@ -18,10 +18,6 @@ export class ProfileComponent {
   ngOnInit(): void {
     if (this.authService.user) {
       this.editForm = this.formBuilder.group({
-        password: this.formBuilder.control(
-          this.authService.user.password,
-          Validators.required
-        ),
         username: this.formBuilder.control(
           this.authService.user.username,
           Validators.required
@@ -39,12 +35,10 @@ export class ProfileComponent {
   }
 
   saveChanges() {
-    const password: string = this.editForm.get('password')?.value;
     const username: string = this.editForm.get('username')?.value;
     const name: string = this.editForm.get('name')?.value;
     const lastName: string = this.editForm.get('lastname')?.value;
     this.authService.updateUser({
-      password,
       username,
       name,
       lastName,
