@@ -4,15 +4,16 @@
     src="./images/serge-kutuzov-HCBmCsaF0GY-unsplash.jpg"
     alt=""
   /> -->
-  <h1 class="title"></h1>
+  <!-- <h1 class="title"></h1> -->
   <!-- <img
     class="logo-pic"
     src="./images/serge-kutuzov-HCBmCsaF0GY-unsplash.jpg"
     alt=""
   /> -->
+  <button class="button" (click)="navugateTo('/')">Home</button>
 
   @if(authService.user) {
-  <div class="username">
+  <div class="button">
     {{ authService.user.name }} {{ authService.user.lastName }}
   </div>
   <button class="button" (click)="navugateTo('/cart')">Cart</button>
