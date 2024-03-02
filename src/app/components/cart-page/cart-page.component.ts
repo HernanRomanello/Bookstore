@@ -10,7 +10,9 @@ import { CartItem } from '../../shared/models/cartItem';
 })
 export class CartPageComponent implements OnInit {
   cart!: Cart;
-  constructor(private cartServise: CartService) {}
+  constructor(private cartServise: CartService) {
+    this.setCart();
+  }
   removeFromCart(CartItem: CartItem) {
     this.cartServise.removeFromCart(CartItem.book.id);
     this.setCart();

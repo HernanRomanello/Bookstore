@@ -1,0 +1,61 @@
+/* Style for the cart item list */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 20px;
+}
+
+/* Style for the cart item image */
+img {
+  width: 200px; /* Adjust according to your design */
+  height: 100px; /* Maintain aspect ratio */
+}
+
+/* Style for the cart item details */
+.cart-item-details {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 20px; /* Adjust according to your design */
+}
+
+/* Style for the cart item title */
+.cart-item-title {
+  font-weight: bold;
+  font-size: 18px; /* Adjust according to your design */
+}
+
+/* Style for the cart item price */
+.cart-item-price {
+  color: #888;
+}
+
+/* Style for the remove button */
+.remove-button {
+  background-color: #ff4d4f; /* Adjust according to your design */
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Style for the quantity input */
+.quantity-input {
+  width: 50px; /* Adjust according to your design */
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Style for the update button */
+.update-button {
+  background-color: #1890ff; /* Adjust according to your design */
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}

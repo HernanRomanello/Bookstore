@@ -30,7 +30,7 @@ export class BookPageComponent implements OnInit {
   ngOnInit(): void {}
 
   addToCart() {
-    // this.cartService.addToCart(this.book);
+    this.cartService.addToCart(this.book);
     // this.cartService.addToCart(this.book);
     // this.router.navigateByUrl('/cart');
     this.router.navigate(['/cart']);
