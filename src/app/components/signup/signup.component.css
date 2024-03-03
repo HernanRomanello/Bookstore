@@ -1,3 +1,10 @@
+.container {
+  background-color: rgb(135, 47, 62, 0.3);
+  width: 100vw !important;
+  height: 100vh !important;
+  margin: auto;
+}
+
 form {
   border: 1px solid lightcoral;
   background-color: aqua;
