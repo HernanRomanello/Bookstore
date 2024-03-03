@@ -39,8 +39,8 @@
       <p><strong>Dimensions:</strong> {{ book.dimentions }}</p>
 
       <div class="button-container">
-        <button onclick="addToCart(false)">Add to Cart</button>
-        <button onclick="addToCart(true)">Buy Now</button>
+        <button (click)="addToCart(false)">Add to Cart</button>
+        <button (click)="addToCart(true)">Buy Now</button>
       </div>
     </div>
   </div>
