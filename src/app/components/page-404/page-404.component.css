@@ -1,6 +1,9 @@
 .not-found-container {
   text-align: center;
-  margin-top: 50px;
+  /* margin-top: 50px; */
+  background-color: rgb(135, 47, 62, 0.3);
+  width: 100vw !important;
+  height: 100vh !important;
 }
 
 h1 {
@@ -14,8 +17,9 @@ p {
 }
 
 img {
-  width: 300px;
-  margin-top: 30px;
+  width: 350px;
+  margin: auto;
+  padding: 2rem;
 }
 
 a {
