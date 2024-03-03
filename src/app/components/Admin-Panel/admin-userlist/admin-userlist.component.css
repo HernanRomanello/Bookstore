@@ -1,0 +1,12 @@
+.discount {
+  padding: 10px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  min-width: 100px;
+}
+
+.c-2 {
+  display: grid !important;
+  grid-template-rows: 1fr 1fr !important;
+  grid-template-columns: 1fr !important;
+}

@@ -1,0 +1,32 @@
+<div class="container c-2">
+  <input
+    [ngModel]="selectedDiscount"
+    (ngModelChange)="selectedDiscount = $event"
+    type="number"
+    min="0"
+    max="100"
+    placeholder="Discount %"
+    class="discount"
+  />
+  <ul>
+    <li *ngFor="let user of usersService.users | async">
+      <div>
+        <a routerLink="/book/{{ user.id }}"
+          ><h2>{{ user.name }}</h2></a
+        >
+      </div>
+      <div>
+        <div for="quantitySelect">Discount : {{ user.discount }}</div>
+      </div>
+      <div>
+        <label for="quantitySelect">Email : </label>
+        <p>{{ user.email }}</p>
+      </div>
+      <div>
+        <button class="remove-button" (click)="updateUserDiscount(user.id)">
+          Update Discount
+        </button>
+      </div>
+    </li>
+  </ul>
+</div>
