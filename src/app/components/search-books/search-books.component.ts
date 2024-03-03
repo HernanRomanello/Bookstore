@@ -17,7 +17,7 @@ export class SearchBooksComponent implements OnInit {
   maxPrice: number = 0;
   books: book[] = []; // This should be an array of book objects
   booksFirstIndex: number = 0;
-  booksLastIndex: number = 12;
+  booksLastIndex: number = 3;
   prevButtonActive: boolean = false;
   nextButtonActive: boolean = true;
 
@@ -77,21 +77,21 @@ export class SearchBooksComponent implements OnInit {
   }
 
   prevPage() {
-    this.booksFirstIndex -= 12;
-    this.booksLastIndex -= 12;
+    this.booksFirstIndex -= 3;
+    this.booksLastIndex -= 3;
     this.hideButtons();
     window.scrollTo(0, 0);
   }
   nextPage() {
-    this.booksFirstIndex += 12;
-    this.booksLastIndex += 12;
+    this.booksFirstIndex += 3;
+    this.booksLastIndex += 3;
     this.hideButtons();
     window.scrollTo(0, 0);
   }
 
   goToPage(pageNumber: number) {
-    this.booksLastIndex = pageNumber * 12;
-    this.booksFirstIndex = this.booksLastIndex - 12;
+    this.booksLastIndex = pageNumber * 3;
+    this.booksFirstIndex = this.booksLastIndex - 3;
     this.hideButtons();
     window.scrollTo(0, 0);
   }
