@@ -1,7 +1,7 @@
 .books-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  background-color: rgba(135, 47, 62, 0.3); /* Updated background color */
+  background-color: rgba(135, 47, 62, 0.3);
   gap: 20px;
   justify-items: center;
 }
@@ -23,7 +23,7 @@
   object-fit: cover;
   border-radius: 4px;
   cursor: pointer;
-  margin-bottom: 10px; /* Adjust margin as needed */
+  margin-bottom: 10px;
 }
 
 .search-container {
