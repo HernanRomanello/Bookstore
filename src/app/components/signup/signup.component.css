@@ -4,7 +4,6 @@
   height: 100vh !important;
   margin: auto;
 }
-
 form {
   border: 1px solid lightcoral;
   background-color: aqua;
@@ -15,7 +14,7 @@ form {
   justify-content: center;
   align-items: center;
   margin: auto;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   border-radius: 10px;
 }
 
