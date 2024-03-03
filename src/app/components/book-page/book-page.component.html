@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <div class="book-details">
     <div>
       <img
@@ -14,6 +14,34 @@
       <p class="description">{{ book.summary }}</p>
       <button (click)="addToCart(false)">Add to Cart</button>
       <button (click)="addToCart(true)">Buy Now</button>
+    </div>
+  </div>
+</div> -->
+<div class="container">
+  <div class="book-details">
+    <div>
+      <img
+        class="book-img"
+        [src]="book.coverImage"
+        alt="Getting More Cover Image"
+      />
+    </div>
+    <div class="book-info">
+      <h2 class="title">Getting More</h2>
+      <p class="author">{{ book.author }}</p>
+      <p class="price">{{ book.price | currency }}</p>
+      <p class="description">
+        {{ book.summary }}
+      </p>
+      <p><strong>Pages:</strong> {{ book.pages }}</p>
+      <p><strong>Published Date:</strong> {{ book.publishedDate }}</p>
+      <p><strong>Language:</strong> {{ book.language }}</p>
+      <p><strong>Dimensions:</strong> {{ book.dimentions }}</p>
+
+      <div class="button-container">
+        <button onclick="addToCart(false)">Add to Cart</button>
+        <button onclick="addToCart(true)">Buy Now</button>
+      </div>
     </div>
   </div>
 </div>
