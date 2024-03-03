@@ -1,3 +1,5 @@
+@if (cart.totalPrice>0) {
+
 <div class="cart-page">
   <div class="container">
     <ul>
@@ -40,3 +42,11 @@
     </div>
   </div>
 </div>
+} @else {
+
+<div class="cart-page">
+  <div class="container-cart-empty">
+    <h2 class="text-empty-cart">Your cart is empty</h2>
+  </div>
+</div>
+}

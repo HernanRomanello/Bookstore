@@ -111,3 +111,23 @@ ul .remove-button:hover {
   font-size: 1.5rem;
   font-weight: bold;
 }
+
+.cart-page {
+  background-color: #f8f9fa;
+  background-color: rgb(135, 47, 62, 0.3);
+}
+
+.container-cart-empty {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+}
+
+.text-empty-cart {
+  font-size: 24px;
+  color: blueviolet;
+  margin: 0; /* Remove any default margin */
+  font-weight: bold;
+  padding: 30%;
+}
