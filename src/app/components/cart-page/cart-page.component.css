@@ -129,5 +129,6 @@ ul .remove-button:hover {
   color: blueviolet;
   margin: 0; /* Remove any default margin */
   font-weight: bold;
-  padding: 30%;
+  font-size: 3rem;
+  padding: 20%;
 }
