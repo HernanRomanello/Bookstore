@@ -11,16 +11,26 @@
   }
 }
 
+h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  text-align: center;
+}
+
 .profile-details {
   margin-top: 20px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: start;
   flex-direction: column;
+  width: fit-content;
+  margin: auto;
 }
 
 .detail {
-  margin-bottom: 15px; /* Increase margin between details */
+  margin-bottom: 15px;
 }
 
 .label {
@@ -66,10 +76,6 @@
 @media screen and (max-width: 480px) {
   .profile-container {
     padding: 15px;
-  }
-
-  .detail {
-    margin-bottom: 10px;
   }
 
   .button-container {
