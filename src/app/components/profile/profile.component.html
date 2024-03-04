@@ -17,7 +17,6 @@
       <span class="label">Email:</span>
       <span class="value">{{ user?.email }}</span>
     </div>
-
     <div class="detail">
       <span class="label">Age:</span>
       <span class="value">{{ user?.age }}</span>
@@ -46,36 +45,71 @@
     <div class="form-group detail">
       <label for="name" class="label">Name:</label>
       <input
-        class="value"
         id="name"
         type="text"
-        class="form-control"
+        class="form-control value"
         formControlName="name"
         placeholder="Enter Name"
       />
     </div>
-
     <div class="form-group detail">
       <label for="lastname" class="label">Last Name:</label>
       <input
-        class="value"
         id="lastname"
         type="text"
-        class="form-control"
+        class="form-control value"
         formControlName="lastname"
         placeholder="Enter Last Name"
       />
     </div>
-
     <div class="form-group detail">
       <label for="username" class="label">Username:</label>
       <input
-        class="value"
         id="username"
         type="text"
-        class="form-control"
+        class="form-control value"
         formControlName="username"
         placeholder="Enter username"
+      />
+    </div>
+    <div class="form-group detail">
+      <label for="email" class="label">Email:</label>
+      <input
+        id="email"
+        type="email"
+        class="form-control value"
+        formControlName="email"
+        placeholder="Enter Email"
+      />
+    </div>
+    <div class="form-group detail">
+      <label for="age" class="label">Age:</label>
+      <input
+        id="age"
+        type="number"
+        class="form-control value"
+        formControlName="age"
+        placeholder="Enter Age"
+      />
+    </div>
+    <div class="form-group detail">
+      <label for="address" class="label">Address:</label>
+      <input
+        id="address"
+        type="text"
+        class="form-control value"
+        formControlName="address"
+        placeholder="Enter Address"
+      />
+    </div>
+    <div class="form-group detail">
+      <label for="phone" class="label">Phone Number:</label>
+      <input
+        id="phone"
+        type="tel"
+        class="form-control value"
+        formControlName="phoneNumber"
+        placeholder="Enter Phone Number"
       />
     </div>
     <div class="button-container">
@@ -89,9 +123,3 @@
     </div>
   </form>
 </div>
-
-<!-- <div class="button-container">
-  <button class="edit-button" (click)="editProfile()">Edit Profile</button>
-  <button class="save-button" *ngIf="isEditing" (click)="saveProfile()">
-    Save
-  </button> -->
