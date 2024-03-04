@@ -1,4 +1,4 @@
-<form [formGroup]="editForm" (ngSubmit)="saveChanges()">
+<form [formGroup]="editForm" (ngSubmit)="saveChanges()" *ngIf="false">
   <div class="form-group">
     <label for="name">Name:</label>
     <input
@@ -58,3 +58,43 @@
     Submit
   </button>
 </form>
+<div class="profile-container">
+  <h1>{{ user?.name }} {{ user?.lastName }} Profile</h1>
+  <div class="profile-details">
+    <div class="detail">
+      <span class="label">Name:</span>
+      <span class="value">{{ user?.name }}</span>
+    </div>
+    <div class="detail">
+      <span class="label">Last Name:</span>
+      <span class="value">{{ user?.lastName }}</span>
+    </div>
+    <div class="detail">
+      <span class="label">Username:</span>
+      <span class="value">{{ user?.username }}</span>
+    </div>
+    <div class="detail">
+      <span class="label">Email:</span>
+      <span class="value">{{ user?.email }}</span>
+    </div>
+
+    <div class="detail">
+      <span class="label">Age:</span>
+      <span class="value">{{ user?.age }}</span>
+    </div>
+    <div class="detail">
+      <span class="label">Address:</span>
+      <span class="value">{{ user?.address }}</span>
+    </div>
+    <div class="detail">
+      <span class="label">Phone Number:</span>
+      <span class="value">{{ user?.phoneNumber }}</span>
+    </div>
+    <div class="button-container">
+      <button class="edit-button" (click)="editProfile()">Edit Profile</button>
+      <button class="save-button" *ngIf="isEditing" (click)="saveProfile()">
+        Save
+      </button>
+    </div>
+  </div>
+</div>

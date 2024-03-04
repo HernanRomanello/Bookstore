@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { User } from '../../shared/models/user';
 
 @Component({
   selector: 'app-profile',
@@ -8,10 +9,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrl: './profile.component.css',
 })
 export class ProfileComponent {
+  user: User | null = null;
+  isEditing: boolean = false;
   constructor(
     public authService: AuthService,
     private formBuilder: FormBuilder
-  ) {}
+  ) {
+    this.user = this.authService.user;
+  }
 
   editForm!: FormGroup;
 
@@ -44,5 +49,15 @@ export class ProfileComponent {
       lastName,
     });
     alert('Changes saved successfully');
+  }
+
+  editProfile(): void {
+    this.isEditing = true;
+    // You can implement logic for enabling form fields for editing here
+  }
+
+  saveProfile(): void {
+    this.isEditing = false;
+    // You can implement logic for saving the edited profile here
   }
 }

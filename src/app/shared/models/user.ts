@@ -5,4 +5,7 @@ export type User = {
   username: string;
   email: string;
   isAdmin: boolean;
+  age?: number;
+  address?: string;
+  phoneNumber?: string;
 };

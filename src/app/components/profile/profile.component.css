@@ -1,0 +1,89 @@
+.profile-container {
+  max-width: 800px;
+  margin: 20px auto;
+
+  @media screen and (min-width: 870px) {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+  }
+}
+
+.profile-details {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.detail {
+  margin-bottom: 15px; /* Increase margin between details */
+}
+
+.label {
+  font-weight: bold;
+  color: #333; /* Darken label color for better readability */
+  text-align: left;
+}
+
+.value {
+  margin-left: 10px;
+  color: #666; /* Adjust value color for better contrast */
+}
+
+.button-container {
+  margin-top: 30px; /* Increase margin for button container */
+  text-align: center; /* Center align buttons */
+}
+
+.edit-button,
+.save-button {
+  padding: 12px 24px; /* Slightly increase padding for buttons */
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  outline: none; /* Remove outline on focus */
+  margin-bottom: 10px; /* Add margin between buttons */
+}
+
+.save-button {
+  margin-left: 15px; /* Increase margin between buttons */
+}
+
+.edit-button:hover,
+.save-button:hover {
+  background-color: #0056b3;
+}
+
+/* Media query for mobile devices */
+@media screen and (max-width: 480px) {
+  .profile-container {
+    padding: 15px;
+  }
+
+  .detail {
+    margin-bottom: 10px;
+  }
+
+  .button-container {
+    margin-top: 20px;
+  }
+
+  .edit-button,
+  .save-button {
+    padding: 10px 20px;
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  .save-button {
+    margin-left: 10px;
+  }
+}
