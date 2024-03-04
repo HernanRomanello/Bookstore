@@ -1,12 +1,14 @@
 .container {
   background-color: rgb(135, 47, 62, 0.3);
+  background-color: whitesmoke;
   width: 100vw !important;
   height: 100vh !important;
   margin: auto;
 }
 form {
-  border: 1px solid lightcoral;
+  /* border: 1px solid lightcoral; */
   background-color: aqua;
+  background-color: #2e86c1;
   width: fit-content;
   padding: 20px;
   display: flex;
@@ -14,7 +16,6 @@ form {
   justify-content: center;
   align-items: center;
   margin: auto;
-  /* margin-top: 20px; */
   border-radius: 10px;
 }
 
@@ -28,6 +29,8 @@ form div {
 label {
   margin-right: 10px;
   width: 100px;
+  color: whitesmoke;
+  font-weight: bold;
 }
 
 input[type="text"],
@@ -45,14 +48,24 @@ input[type="password"] {
 
 .submit-button {
   background-color: lightgreen;
+  background-color: #c1a02e;
   border-radius: 5px;
   border: none;
   padding: 10px 20px;
   /* cursor: pointer; */
   font-size: 16px;
+  color: #666666;
+  font-weight: bold;
 }
 
-.submit-button:active {
+.submit-button:hover {
   background-color: limegreen;
   color: yellow;
+  transition: 0.5s;
+  transform: scale(1.1);
 }
+
+/* .submit-button:active {
+  background-color: limegreen;
+  color: yellow;
+} */
