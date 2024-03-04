@@ -5,7 +5,11 @@
     <ul>
       <li *ngFor="let cartItem of cart.Items">
         <div>
-          <img [src]="cartItem.book.coverImage" [alt]="cartItem.book.title" />
+          <img
+            [src]="cartItem.book.coverImage"
+            [alt]="cartItem.book.title"
+            routerLink="/book/{{ cartItem.book.id }}"
+          />
         </div>
         <div>
           <a routerLink="/book/{{ cartItem.book.id }}"
