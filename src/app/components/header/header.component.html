@@ -2,7 +2,7 @@
   <button class="button" (click)="navugateTo('/')">Home</button>
 
   @if(authService.user) {
-  <div class="button">
+  <div id="name" class="button">
     {{ authService.user.name }} {{ authService.user.lastName }}
   </div>
   <button class="button" (click)="navugateTo('/cart')">Cart</button>
