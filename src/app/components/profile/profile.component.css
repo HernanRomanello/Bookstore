@@ -51,12 +51,12 @@ h1 {
 
 .button-container {
   margin-top: 30px; /* Increase margin for button container */
-  text-align: center; /* Center align buttons */
+  text-align: center;
 }
 
 .edit-button,
 .save-button {
-  padding: 12px 24px; /* Slightly increase padding for buttons */
+  padding: 12px 24px;
   border: none;
   border-radius: 5px;
   background-color: #007bff;

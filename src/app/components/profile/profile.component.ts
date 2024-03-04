@@ -35,6 +35,11 @@ export class ProfileComponent {
           this.authService.user.lastName,
           Validators.required
         ),
+        email: this.formBuilder.control(this.authService.user.email, [
+          Validators.required,
+          Validators.email,
+        ]),
+        age: this.formBuilder.control(this.authService.user.age),
       });
     }
   }
@@ -43,10 +48,15 @@ export class ProfileComponent {
     const username: string = this.editForm.get('username')?.value;
     const name: string = this.editForm.get('name')?.value;
     const lastName: string = this.editForm.get('lastname')?.value;
+    const email: string = this.editForm.get('email')?.value;
+    const age: number = this.editForm.get('age')?.value;
+
     this.authService.updateUser({
       username,
       name,
       lastName,
+      email,
+      age,
     });
     this.isEditing = !this.isEditing;
     this.user = this.authService.user;
@@ -55,7 +65,6 @@ export class ProfileComponent {
 
   editProfile(): void {
     this.isEditing = !this.isEditing;
-    // You can implement logic for enabling form fields for editing here
   }
 
   saveProfile(): void {
