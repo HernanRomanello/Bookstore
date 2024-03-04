@@ -1,66 +1,6 @@
-<form [formGroup]="editForm" (ngSubmit)="saveChanges()" *ngIf="false">
-  <div class="form-group">
-    <label for="name">Name:</label>
-    <input
-      id="name"
-      type="text"
-      class="form-control"
-      formControlName="name"
-      placeholder="Enter Name"
-    />
-    <div
-      *ngIf="editForm.get('name')?.invalid && editForm.get('name')?.touched"
-      class="error-message"
-    >
-      Please enter a Name
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="lastname">Last Name:</label>
-    <input
-      id="lastname"
-      type="text"
-      class="form-control"
-      formControlName="lastname"
-      placeholder="Enter Last Name"
-    />
-    <div
-      *ngIf="
-        editForm.get('lastname')?.invalid && editForm.get('lastname')?.touched
-      "
-      class="error-message"
-    >
-      Please enter a Last Name
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="username">Username:</label>
-    <input
-      id="username"
-      type="text"
-      class="form-control"
-      formControlName="username"
-      placeholder="Enter username"
-    />
-    <div
-      *ngIf="
-        editForm.get('username')?.invalid && editForm.get('username')?.touched
-      "
-      class="error-message"
-    >
-      Please enter a username
-    </div>
-  </div>
-
-  <button class="submit-button" type="submit" [disabled]="editForm.invalid">
-    Submit
-  </button>
-</form>
 <h1>{{ user?.name }} {{ user?.lastName }} Profile</h1>
 <div class="profile-container">
-  <div class="profile-details">
+  <div class="profile-details" *ngIf="!isEditing">
     <div class="detail">
       <span class="label">Name:</span>
       <span class="value">{{ user?.name }}</span>
@@ -97,4 +37,61 @@
       </button>
     </div>
   </div>
+  <form
+    [formGroup]="editForm"
+    (ngSubmit)="saveChanges()"
+    *ngIf="isEditing"
+    class="profile-details"
+  >
+    <div class="form-group detail">
+      <label for="name" class="label">Name:</label>
+      <input
+        class="value"
+        id="name"
+        type="text"
+        class="form-control"
+        formControlName="name"
+        placeholder="Enter Name"
+      />
+    </div>
+
+    <div class="form-group detail">
+      <label for="lastname" class="label">Last Name:</label>
+      <input
+        class="value"
+        id="lastname"
+        type="text"
+        class="form-control"
+        formControlName="lastname"
+        placeholder="Enter Last Name"
+      />
+    </div>
+
+    <div class="form-group detail">
+      <label for="username" class="label">Username:</label>
+      <input
+        class="value"
+        id="username"
+        type="text"
+        class="form-control"
+        formControlName="username"
+        placeholder="Enter username"
+      />
+    </div>
+    <div class="button-container">
+      <button
+        class="submit-button save-button"
+        type="submit"
+        [disabled]="editForm.invalid"
+      >
+        Save
+      </button>
+    </div>
+  </form>
 </div>
+
+<!-- <div class="button-container">
+  <button class="edit-button" (click)="editProfile()">Edit Profile</button>
+  <button class="save-button" *ngIf="isEditing" (click)="saveProfile()">
+    Save
+  </button> -->

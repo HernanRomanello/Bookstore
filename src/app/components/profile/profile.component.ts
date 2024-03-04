@@ -48,16 +48,17 @@ export class ProfileComponent {
       name,
       lastName,
     });
+    this.isEditing = !this.isEditing;
+    this.user = this.authService.user;
     alert('Changes saved successfully');
   }
 
   editProfile(): void {
-    this.isEditing = true;
+    this.isEditing = !this.isEditing;
     // You can implement logic for enabling form fields for editing here
   }
 
   saveProfile(): void {
-    this.isEditing = false;
     // You can implement logic for saving the edited profile here
   }
 }
