@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../services/cart/cart.service';
 import { Cart } from '../../shared/models/cart';
 import { CartItem } from '../../shared/models/cartItem';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-cart-page',
@@ -10,8 +11,15 @@ import { CartItem } from '../../shared/models/cartItem';
 })
 export class CartPageComponent implements OnInit {
   cart!: Cart;
-  constructor(private cartServise: CartService) {
+  discount: number = 1;
+  constructor(
+    private cartServise: CartService,
+    private authService: AuthService
+  ) {
     this.setCart();
+    if (this.authService.user) {
+      this.discount = this.authService.user.priceDiscount || 1;
+    }
   }
   removeFromCart(CartItem: CartItem) {
     this.cartServise.removeFromCart(CartItem.book.id);
