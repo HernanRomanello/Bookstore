@@ -8,4 +8,5 @@ export type User = {
   age?: number;
   address?: string;
   phoneNumber?: string;
+  priceDiscount?: number;
 };

@@ -66,6 +66,7 @@ export class SignupComponent {
       name,
       isAdmin: false,
       lastName,
+      priceDiscount: 0.8,
     };
     if (await this.authService.register(user, password)) {
       this.router.navigate(['/']);

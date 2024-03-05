@@ -34,12 +34,14 @@ const routes: Routes = [
     component: SigninComponent,
     title: 'Sign in',
     // resolve: { user: usersResolver },
+    canActivate: [userAuthGuard],
   },
   {
     path: 'signup',
     component: SignupComponent,
     title: 'Sign up',
     // resolve: { user: usersResolver },
+    canActivate: [userAuthGuard],
   },
 
   {

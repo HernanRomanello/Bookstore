@@ -22,6 +22,7 @@ import { Observable } from 'rxjs';
 export class AuthService {
   user: User | null = null;
   errors: Set<string> = new Set<string>();
+  priceDiscount: number = 1;
   constructor(private auth: Auth, private database: Database) {
     onAuthStateChanged(this.auth, async (userAuth) => {
       if (userAuth) {

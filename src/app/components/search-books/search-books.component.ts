@@ -20,13 +20,17 @@ export class SearchBooksComponent implements OnInit {
   booksLastIndex: number = 3;
   prevButtonActive: boolean = false;
   nextButtonActive: boolean = true;
-
+  discount: number = this.authService.priceDiscount;
   constructor(
     private booksservice: BooksService,
     private authService: AuthService,
     private route: ActivatedRoute,
     private router: Router
-  ) {}
+  ) {
+    if (this.authService.user) {
+      this.discount = this.authService.user.priceDiscount || 1;
+    }
+  }
 
   hideButtons() {
     if (this.booksFirstIndex === 0) {
