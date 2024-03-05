@@ -5,8 +5,8 @@
         <img [src]="book.coverImage" [alt]="book.title" />
       </div>
       <div>
-        <a routerLink="/book/{{ book.id }}"
-          ><h2>{{ book.title }}</h2></a
+        >
+        <h2>{{ book.title }}</h2>
         >
       </div>
       <div>
@@ -22,7 +22,7 @@
         />
       </div>
       <div>
-        <p>{{ book.price * +quantityInput.value | currency }}</p>
+        <p>{{ book.price * +quantityInput.value }}</p>
       </div>
       <div>
         <button
