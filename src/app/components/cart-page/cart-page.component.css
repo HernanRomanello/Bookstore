@@ -153,5 +153,8 @@ input,
   @media screen and (max-width: 640px) {
     border-bottom: 1px solid #000;
     border-radius: unset !important;
+    .remove-button {
+      padding: 1rem;
+    }
   }
 }
