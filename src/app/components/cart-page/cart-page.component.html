@@ -5,19 +5,19 @@
     <div class="">
       <ul class="items">
         <li *ngFor="let cartItem of cart.Items">
-          <div>
+          <div class="item">
             <img
               [src]="cartItem.book.coverImage"
               [alt]="cartItem.book.title"
               routerLink="/book/{{ cartItem.book.id }}"
             />
           </div>
-          <div>
+          <div class="item">
             <a routerLink="/book/{{ cartItem.book.id }}"
               ><h1>{{ cartItem.book.title }}</h1></a
             >
           </div>
-          <div class="quantity">
+          <div class="quantity item">
             <label for="quantitySelect">Quantity : </label>
             <input
               type="number"
@@ -32,14 +32,17 @@
           </div>
 
           <div>
-            <p class="price">
+            <p class="price item">
               {{
                 cartItem.book.price * +quantityInput.value * discount | currency
               }}
             </p>
           </div>
           <div>
-            <button class="remove-button" (click)="removeFromCart(cartItem)">
+            <button
+              class="remove-button item"
+              (click)="removeFromCart(cartItem)"
+            >
               Remove
             </button>
           </div>

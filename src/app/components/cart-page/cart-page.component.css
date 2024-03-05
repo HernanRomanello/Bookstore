@@ -59,16 +59,12 @@ ul li {
 ul li div {
   padding: 1rem;
 }
-/* ul li div:not(:first-child) {
-  flex-basis: 18%;
-} */
 
 ul li input {
-  width: 3rem;
+  width: 6rem;
   outline: none;
   border: none;
-  /* font-size: 1.1rem;
-  font-weight: 100; */
+  text-align: center;
 }
 
 ul .remove-button {
@@ -150,11 +146,15 @@ input,
 
 .items li {
   width: 100vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   @media screen and (max-width: 640px) {
-    border-bottom: 1px solid #000;
-    border-radius: unset !important;
-    .remove-button {
-      padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .item {
+      margin: unset !important;
+      padding: unset !important;
     }
   }
 }
