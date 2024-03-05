@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BooksService } from '../../services/books/books.service';
 import { CartService } from '../../services/cart/cart.service';
 import { CartItem } from '../../shared/models/cartItem';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-book-page',
@@ -12,13 +13,17 @@ import { CartItem } from '../../shared/models/cartItem';
 })
 export class BookPageComponent implements OnInit {
   book!: book;
-
+  discount: number = 1;
   constructor(
     private route: ActivatedRoute,
     private bookService: BooksService,
     private cartService: CartService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {
+    if (this.authService.user) {
+      this.discount = this.authService.user.priceDiscount || 1;
+    }
     this.route.params.subscribe((params) => {
       if (params['id']) {
         console.log(params['id']);

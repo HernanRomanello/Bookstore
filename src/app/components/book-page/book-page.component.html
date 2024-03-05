@@ -1,22 +1,3 @@
-<!-- <div class="container">
-  <div class="book-details">
-    <div>
-      <img
-        class="book-img"
-        [src]="book.coverImage"
-        [alt]="book.title + ' Cover Image'"
-      />
-    </div>
-    <div>
-      <h2 class="title">{{ book.title }}</h2>
-      <p class="author">By {{ book.author }}</p>
-      <p class="price">{{ book.price | currency }}</p>
-      <p class="description">{{ book.summary }}</p>
-      <button (click)="addToCart(false)">Add to Cart</button>
-      <button (click)="addToCart(true)">Buy Now</button>
-    </div>
-  </div>
-</div> -->
 <div class="container">
   <div class="book-details">
     <div>
@@ -29,7 +10,7 @@
     <div class="book-info">
       <h2 class="title">Getting More</h2>
       <p class="author">{{ book.author }}</p>
-      <p class="price">{{ book.price | currency }}</p>
+      <p class="price">{{ book.price * discount | currency }}</p>
       <p class="description">
         {{ book.summary }}
       </p>
