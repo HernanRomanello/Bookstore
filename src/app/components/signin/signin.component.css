@@ -1,6 +1,6 @@
 form {
   @media screen and (min-width: 450px) {
-    margin-top: 12% !important;
+    margin-top: 8% !important;
   }
   @media screen and (max-width: 450px) {
     margin-top: 0 !important;
