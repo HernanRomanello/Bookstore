@@ -18,6 +18,11 @@ export class AdminBooklistComponent implements OnInit {
   constructor(private booksService: BooksService) {}
 
   ngOnInit(): void {
-    this.books = this.booksService.getAllBooks();
+    const storedData = localStorage.getItem('books');
+    if (storedData) {
+      alert('Data found in local storage');
+      this.books = JSON.parse(storedData); // Parse JSON string to array
+      console.log(this.books);
+    }
   }
 }

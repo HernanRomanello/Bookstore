@@ -53,7 +53,7 @@ const routes: Routes = [
 
   {
     path: 'admin',
-    canActivate: [adminAuthGuard], // Protect admin routes
+    // canActivate: [adminAuthGuard],
     children: [
       { path: '', component: AdminDashboardComponent }, // Admin dashboard
       { path: 'booklist', component: AdminBooklistComponent }, // Admin login page
