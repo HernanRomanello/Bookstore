@@ -20,7 +20,6 @@ export class AdminBooklistComponent implements OnInit {
   ngOnInit(): void {
     const storedData = localStorage.getItem('books');
     if (storedData) {
-      alert('Data found in local storage');
       this.books = JSON.parse(storedData); // Parse JSON string to array
       console.log(this.books);
     }

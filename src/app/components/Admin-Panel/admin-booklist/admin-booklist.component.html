@@ -6,7 +6,21 @@
 </div> -->
 
 @for (book of books; track $index) {
-<div class="cart-page">
+<div class="container">
+  <div class="">
+    <li></li>
+    <div class="item">
+      <img [src]="book.coverImage" [alt]="book.title" />
+    </div>
+    <h2 class="item">{{ book.title }}</h2>
+    <p class="item">Author: {{ book.author }}</p>
+    <p class="item">Price: {{ book.price }}</p>
+    <p class="item">Pages: {{ book.pages }}</p>
+  </div>
+</div>
+
+}
+<!-- <div class="cart-page">
   <div class="container">
     <div class="">
       <ul class="items">
@@ -15,11 +29,11 @@
             <img
               [src]="cartItem.book.coverImage"
               [alt]="cartItem.book.title"
-              routerLink=""
+              routerLink="/book/{{ cartItem.book.id }}"
             />
           </div>
           <div class="item">
-            <a routerLink=""
+            <a routerLink="/book/{{ cartItem.book.id }}"
               ><h1>{{ cartItem.book.title }}</h1></a
             >
           </div>
@@ -33,20 +47,34 @@
               [value]="cartItem.quantity"
               #quantityInput
               name=""
+              (change)="changeQuantity(cartItem, +quantityInput.value)"
             />
           </div>
 
           <div>
             <p class="price item">
-              {{ cartItem.book.price * +quantityInput.value }}
+              {{
+                cartItem.book.price * +quantityInput.value * discount | currency
+              }}
             </p>
           </div>
           <div>
-            <button class="remove-button item">Remove</button>
+            <button
+              class="remove-button item"
+              (click)="removeFromCart(cartItem)"
+            >
+              Remove
+            </button>
           </div>
         </li>
       </ul>
     </div>
+
+    <div class="checkout">
+      <div class="books-count">Count :{{ cart.totalItems }}</div>
+      <div class="total-price">
+        Total Price :{{ (cart.totalPrice * discount).toFixed(2) | currency }}
+      </div>
+    </div>
   </div>
-</div>
-}
+</div> -->
