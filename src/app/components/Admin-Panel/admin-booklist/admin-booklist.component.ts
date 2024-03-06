@@ -1,6 +1,8 @@
-import { Component, inject } from '@angular/core';
-import { AdminService } from '../../../services/admin/admin.service';
+import { Component, OnInit, inject } from '@angular/core';
+// import { AdminService } from '../../../services/admin/admin.service';
 import { BooksService } from '../../../services/books/books.service';
+import { CommonModule } from '@angular/common';
+import { book } from '../../../shared/models/book';
 
 @Component({
   selector: 'app-admin-booklist',
@@ -10,7 +12,12 @@ import { BooksService } from '../../../services/books/books.service';
     '../../cart-page/cart-page.component.css',
   ],
 })
-export class AdminBooklistComponent {
-  adminService = inject(AdminService);
-  booksService = inject(BooksService);
+export class AdminBooklistComponent implements OnInit {
+  // adminService = inject(AdminService);
+  books: book[] = [];
+  constructor(private booksService: BooksService) {}
+
+  ngOnInit(): void {
+    this.books = this.booksService.getAllBooks();
+  }
 }

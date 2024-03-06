@@ -11,6 +11,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { userAuthGuard } from './Guards/user-auth.guard';
 import { BookPageComponent } from './components/book-page/book-page.component';
 import { CartPageComponent } from './components/cart-page/cart-page.component';
+import { AdminBooklistComponent } from './components/Admin-Panel/admin-booklist/admin-booklist.component';
 
 const routes: Routes = [
   {
@@ -54,8 +55,8 @@ const routes: Routes = [
     path: 'admin',
     canActivate: [adminAuthGuard], // Protect admin routes
     children: [
-      // { path: '', component: AdminloginComponent }, // Admin login page
       { path: '', component: AdminDashboardComponent }, // Admin dashboard
+      { path: 'booklist', component: AdminBooklistComponent }, // Admin login page
     ],
   },
   {

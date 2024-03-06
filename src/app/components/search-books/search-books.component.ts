@@ -61,12 +61,16 @@ export class SearchBooksComponent implements OnInit {
           });
         } else {
           this.books = this.booksservice.getAllBooks();
+          this.saveBooksToLocal();
         }
         this.hideButtons(); // Ensure that the hideButtons function is called after updating the books array
       });
     });
   }
-
+  saveBooksToLocal(): void {
+    // Serialize books array to JSON string and save to local storage
+    localStorage.setItem('books', JSON.stringify(this.books));
+  }
   searchBooks(
     searchQuery: string,
     selectedFilter: string,

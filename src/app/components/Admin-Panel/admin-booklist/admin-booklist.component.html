@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <ul>
     <li *ngFor="let book of booksService.books | async">
       <div>
@@ -25,12 +25,7 @@
         <p>{{ book.price * +quantityInput.value }}</p>
       </div>
       <div>
-        <button
-          class="remove-button"
-          (click)="adminService.removeBook(book.id)"
-        >
-          Remove
-        </button>
+        <button class="remove-button">Remove</button>
       </div>
     </li>
   </ul>
@@ -38,4 +33,61 @@
   <div class="admin-booklist-controls">
     <a routerLink="/admin/addbook">Add Book</a>
   </div>
-</div>
+</div> -->
+
+<!-- <div class="cart-page">
+  <div class="container">
+    <div class="">
+      <ul class="items">
+        <li *ngFor="let book of books">
+          <div class="item">
+            <img [src]="book.coverImage" [alt]="book.title" />
+          </div>
+          <div class="item">
+            >
+            <h1>{{ book.title }}</h1>
+          </div>
+          <div class="quantity item">
+            <label for="quantitySelect">Quantity : </label>
+            <input
+              type="number"
+              id="quantitySelect"
+              min="1"
+              step="1"
+              [value]="1"
+              #quantityInput
+              name=""
+            />
+          </div>
+
+          <div>
+            <p class="price item">
+              {{ book.price * +quantityInput.value }}
+            </p>
+          </div>
+          <div>
+            <button class="remove-button item">Remove</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+
+  </div>
+</div> -->
+<div>ffffffffffff</div>
+<!-- <div class="container">
+  <div>
+    <ul>
+      <li *ngFor="let book of books">
+        <div class="item">
+          <img [src]="book.coverImage" [alt]="book.title" />
+        </div>
+        <div class="item">
+          >
+          <h1>{{ book.title }}</h1>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div> -->
