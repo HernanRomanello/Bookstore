@@ -74,6 +74,7 @@ ul .remove-button {
   font-weight: bold;
   font-size: 1.5rem;
   outline: none;
+  background-color: transparent;
 }
 ul .remove-button:hover {
   cursor: pointer;

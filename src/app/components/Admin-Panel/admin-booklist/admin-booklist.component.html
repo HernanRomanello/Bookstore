@@ -8,14 +8,17 @@
 @for (book of books; track $index) {
 <div class="container">
   <div class="">
-    <li></li>
-    <div class="item">
-      <img [src]="book.coverImage" [alt]="book.title" />
-    </div>
-    <h2 class="item">{{ book.title }}</h2>
-    <p class="item">Author: {{ book.author }}</p>
-    <p class="item">Price: {{ book.price }}</p>
-    <p class="item">Pages: {{ book.pages }}</p>
+    <ul class="items">
+      <li>
+        <div class="item">
+          <img [src]="book.coverImage" [alt]="book.title" />
+        </div>
+        <h1 class="item">{{ book.title }}</h1>
+        <div class="item quantity">Author: {{ book.author }}</div>
+        <div class="price item">Price: ${{ book.price }}</div>
+        <button class="remove-button item">Remove</button>
+      </li>
+    </ul>
   </div>
 </div>
 
@@ -25,30 +28,7 @@
     <div class="">
       <ul class="items">
         <li *ngFor="let cartItem of cart.Items">
-          <div class="item">
-            <img
-              [src]="cartItem.book.coverImage"
-              [alt]="cartItem.book.title"
-              routerLink="/book/{{ cartItem.book.id }}"
-            />
-          </div>
-          <div class="item">
-            <a routerLink="/book/{{ cartItem.book.id }}"
-              ><h1>{{ cartItem.book.title }}</h1></a
-            >
-          </div>
-          <div class="quantity item">
-            <label for="quantitySelect">Quantity : </label>
-            <input
-              type="number"
-              id="quantitySelect"
-              min="1"
-              step="1"
-              [value]="cartItem.quantity"
-              #quantityInput
-              name=""
-              (change)="changeQuantity(cartItem, +quantityInput.value)"
-            />
+          
           </div>
 
           <div>
