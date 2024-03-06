@@ -18,8 +18,14 @@
   text-align: center;
 }
 
-h1 {
+h1,
+input {
   color: green;
+  font-weight: bold !important;
+  display: block;
+  border: none !important;
+  font-size: 1.5rem;
+  text-align: center;
 }
 
 .button-container button {

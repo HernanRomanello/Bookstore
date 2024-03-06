@@ -2,10 +2,28 @@
 
 <div class="discount-container">
   <p>Discount rate for registered users:</p>
+  @if (!discountRateEditable) {
   <h1>{{ discount | percent }}</h1>
 
+  }@else {
+
+  <input
+    #discountRate
+    type="number"
+    min="0.01"
+    step="0.01"
+    max="1"
+    [value]="discount"
+    (change)="updateDiscountRate(+discountRate.value)"
+  />
+  }
+
   <div class="button-container">
-    <button *ngIf="true" (click)="updateDiscount()">Update Discount</button>
-    <button *ngIf="false" (click)="saveDiscount()">Save</button>
+    <button *ngIf="!discountRateEditable" (click)="updateDiscount()">
+      Update Discount
+    </button>
+    <button *ngIf="discountRateEditable" (click)="saveDiscount(discount)">
+      Save
+    </button>
   </div>
 </div>

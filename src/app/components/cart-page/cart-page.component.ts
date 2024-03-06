@@ -12,6 +12,7 @@ import { AuthService } from '../../services/auth.service';
 export class CartPageComponent implements OnInit {
   cart!: Cart;
   discount: number = 1;
+
   constructor(
     private cartServise: CartService,
     private authService: AuthService

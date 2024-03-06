@@ -24,6 +24,7 @@ export class SignupComponent {
   ) {}
 
   signupForm!: FormGroup;
+  discount: number = 0.8;
 
   ngOnInit(): void {
     this.signupForm = this.formbuilder.group({
@@ -39,6 +40,10 @@ export class SignupComponent {
         Validators.email,
       ]),
     });
+    const storedDiscount = localStorage.getItem('discount');
+    if (storedDiscount) {
+      this.discount = 1 - parseFloat(storedDiscount);
+    }
   }
   passwordValidator(control: AbstractControl): Validators | null {
     const password: string = control.value;
@@ -66,7 +71,7 @@ export class SignupComponent {
       name,
       isAdmin: false,
       lastName,
-      priceDiscount: 0.8,
+      priceDiscount: this.discount,
     };
     if (await this.authService.register(user, password)) {
       this.router.navigate(['/']);

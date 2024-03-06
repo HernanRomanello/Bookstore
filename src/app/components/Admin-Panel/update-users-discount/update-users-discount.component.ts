@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-update-users-discount',
@@ -7,9 +8,18 @@ import { Component } from '@angular/core';
 })
 export class UpdateUsersDiscountComponent {
   discount: number = 0.2;
-  constructor() {}
+  discountRateEditable: boolean = false;
+  constructor(private authService: AuthService) {}
   updateDiscount() {
-    console.log(this.discount);
+    this.discountRateEditable = !this.discountRateEditable;
   }
-  saveDiscount() {}
+  saveDiscount(discountRate: number) {
+    localStorage.setItem('discount', discountRate.toString());
+    this.discountRateEditable = !this.discountRateEditable;
+  }
+
+  updateDiscountRate(discountRate: number) {
+    this.discount = discountRate;
+    this.authService.updateUser({});
+  }
 }
