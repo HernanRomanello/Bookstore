@@ -16,6 +16,8 @@ export class SearchBooksComponent implements OnInit {
   minPrice: number = 0;
   maxPrice: number = 0;
   books: book[] = []; // This should be an array of book objects
+  booksFromlocalStorage: book[] = []; // This should be an array of book objects
+
   booksFirstIndex: number = 0;
   booksLastIndex: number = 3;
   prevButtonActive: boolean = false;
@@ -62,6 +64,17 @@ export class SearchBooksComponent implements OnInit {
         } else {
           this.books = this.booksservice.getAllBooks();
           this.saveBooksToLocal();
+          const storedData = localStorage.getItem('books');
+          if (storedData) {
+            this.books = JSON.parse(storedData); // Parse JSON string to array
+            // let bookToUpdate = books.find(book => book.id === 2);
+            let bookToUpdate = this.books.find((book) => book.id === 2);
+            // if (bookToUpdate) {
+            //   // Update the title
+            //   bookToUpdate.title = 'New Title';
+            // }
+            // localStorage.setItem('books', JSON.stringify(this.books));
+          }
         }
         this.hideButtons(); // Ensure that the hideButtons function is called after updating the books array
       });

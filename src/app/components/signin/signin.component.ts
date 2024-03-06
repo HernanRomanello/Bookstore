@@ -17,6 +17,7 @@ export class SigninComponent implements OnInit {
   ) {}
 
   loginForm!: FormGroup;
+  discount: number = 0.8;
 
   ngOnInit(): void {
     this.loginForm = this.formbuilder.group({
