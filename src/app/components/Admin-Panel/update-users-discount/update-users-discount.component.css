@@ -1,0 +1,37 @@
+/* admin-booklist.component.css */
+
+.discount-container {
+  margin-bottom: 20px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  flex-direction: column;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.discount-container p {
+  color: blue;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+h1 {
+  color: green;
+}
+
+.button-container button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.button-container button:hover {
+  background-color: #0056b3;
+  color: yellow;
+}

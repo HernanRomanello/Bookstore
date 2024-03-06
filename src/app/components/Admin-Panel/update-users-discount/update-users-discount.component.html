@@ -1,0 +1,11 @@
+<!-- admin-booklist.component.html -->
+
+<div class="discount-container">
+  <p>Discount rate for registered users:</p>
+  <h1>{{ discount | percent }}</h1>
+
+  <div class="button-container">
+    <button *ngIf="true" (click)="updateDiscount()">Update Discount</button>
+    <button *ngIf="false" (click)="saveDiscount()">Save</button>
+  </div>
+</div>

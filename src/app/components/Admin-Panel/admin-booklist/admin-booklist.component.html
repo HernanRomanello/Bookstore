@@ -1,10 +1,3 @@
-<!-- <div *ngFor="let book of books">
-  <h2>{{ book.title }}</h2>
-  <p>Author: {{ book.author }}</p>
-  <p>Price: {{ book.price }}</p>
-  <p>Pages: {{ book.pages }}</p>
-</div> -->
-
 @for (book of books; track $index) {
 <div class="container">
   <div class="">
@@ -15,7 +8,7 @@
         </div>
         <h1 class="item">{{ book.title }}</h1>
         <div class="item quantity">Author: {{ book.author }}</div>
-        <div class="price item">Price: ${{ book.price }}</div>
+        <div class="price item">Price: {{ book.price | currency }}</div>
         <button class="remove-button item">Remove</button>
       </li>
     </ul>
@@ -23,38 +16,3 @@
 </div>
 
 }
-<!-- <div class="cart-page">
-  <div class="container">
-    <div class="">
-      <ul class="items">
-        <li *ngFor="let cartItem of cart.Items">
-          
-          </div>
-
-          <div>
-            <p class="price item">
-              {{
-                cartItem.book.price * +quantityInput.value * discount | currency
-              }}
-            </p>
-          </div>
-          <div>
-            <button
-              class="remove-button item"
-              (click)="removeFromCart(cartItem)"
-            >
-              Remove
-            </button>
-          </div>
-        </li>
-      </ul>
-    </div>
-
-    <div class="checkout">
-      <div class="books-count">Count :{{ cart.totalItems }}</div>
-      <div class="total-price">
-        Total Price :{{ (cart.totalPrice * discount).toFixed(2) | currency }}
-      </div>
-    </div>
-  </div>
-</div> -->

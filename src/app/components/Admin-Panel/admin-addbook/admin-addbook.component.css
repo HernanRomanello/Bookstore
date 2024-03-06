@@ -1,3 +1,7 @@
+input {
+  color: black;
+  font-weight: bold;
+}
 .addbook form {
   display: flex;
   flex-direction: column;

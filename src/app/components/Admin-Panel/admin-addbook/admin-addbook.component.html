@@ -1,4 +1,5 @@
-<!-- <div class="addbook">
+<div class="addbook">
+  <!-- <form [formGroup]="addBookForm"> -->
   <form [formGroup]="addBookForm">
     <div class="form-group">
       <label for="title">Title</label>
@@ -37,7 +38,6 @@
       <label for="coverImage">Cover Image</label>
       <input
         type="file"
-        (change)="onFileSelected($event)"
         class="form-control"
         required
         id="coverImage"
@@ -110,6 +110,6 @@
       ></textarea>
     </div>
 
-    <button (click)="onSubmit()" class="btn btn-primary">Add Book</button>
+    <button class="btn btn-primary">Add Book</button>
   </form>
-</div> -->
+</div>

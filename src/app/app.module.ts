@@ -23,6 +23,9 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getDatabase, provideDatabase } from '@angular/fire/database';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { environment } from '../environments/environment.development';
+import { AdminAddbookComponent } from './components/Admin-Panel/admin-addbook/admin-addbook.component';
+import { AdminBooklistComponent } from './components/Admin-Panel/admin-booklist/admin-booklist.component';
+import { UpdateUsersDiscountComponent } from './components/Admin-Panel/update-users-discount/update-users-discount.component';
 
 @NgModule({
   declarations: [
@@ -32,11 +35,13 @@ import { environment } from '../environments/environment.development';
     SearchBooksComponent,
     SignupComponent,
     SigninComponent,
-    AdminloginComponent,
     AdminDashboardComponent,
     ProfileComponent,
     BookPageComponent,
     CartPageComponent,
+    AdminAddbookComponent,
+    AdminBooklistComponent,
+    UpdateUsersDiscountComponent,
   ],
   imports: [
     BrowserModule,

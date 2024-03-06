@@ -40,6 +40,10 @@ export class ProfileComponent {
           Validators.email,
         ]),
         age: this.formBuilder.control(this.authService.user.age),
+        address: this.formBuilder.control(this.authService.user.address),
+        phoneNumber: this.formBuilder.control(
+          this.authService.user.phoneNumber
+        ),
       });
     }
   }
@@ -50,6 +54,8 @@ export class ProfileComponent {
     const lastName: string = this.editForm.get('lastname')?.value;
     const email: string = this.editForm.get('email')?.value;
     const age: number = this.editForm.get('age')?.value;
+    const address: string = this.editForm.get('address')?.value;
+    const phoneNumber: string = this.editForm.get('phoneNumber')?.value;
 
     this.authService.updateUser({
       username,
@@ -57,6 +63,8 @@ export class ProfileComponent {
       lastName,
       email,
       age,
+      address,
+      phoneNumber,
     });
     this.isEditing = !this.isEditing;
     this.user = this.authService.user;

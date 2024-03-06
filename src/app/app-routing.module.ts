@@ -12,6 +12,8 @@ import { userAuthGuard } from './Guards/user-auth.guard';
 import { BookPageComponent } from './components/book-page/book-page.component';
 import { CartPageComponent } from './components/cart-page/cart-page.component';
 import { AdminBooklistComponent } from './components/Admin-Panel/admin-booklist/admin-booklist.component';
+import { AdminAddbookComponent } from './components/Admin-Panel/admin-addbook/admin-addbook.component';
+import { UpdateUsersDiscountComponent } from './components/Admin-Panel/update-users-discount/update-users-discount.component';
 
 const routes: Routes = [
   {
@@ -55,8 +57,22 @@ const routes: Routes = [
     path: 'admin',
     // canActivate: [adminAuthGuard],
     children: [
-      { path: '', component: AdminDashboardComponent }, // Admin dashboard
-      { path: 'booklist', component: AdminBooklistComponent }, // Admin login page
+      {
+        path: '',
+        component: AdminDashboardComponent,
+        title: 'Admin Dashboard',
+      },
+      {
+        path: 'booklist',
+        component: AdminBooklistComponent,
+        title: 'Book List',
+      },
+      { path: 'addbook', component: AdminAddbookComponent, title: 'Add Book' },
+      {
+        path: 'updatediscount',
+        component: UpdateUsersDiscountComponent,
+        title: 'Update Users Discount',
+      },
     ],
   },
   {
