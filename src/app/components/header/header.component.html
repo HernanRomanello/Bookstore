@@ -1,5 +1,5 @@
 <header class="header">
-  <div *ngIf="authService.user | async as user">
+  <div class="header" *ngIf="authService.user | async as user">
     <button class="button" (click)="navugateTo('/')">Home</button>
     <span id="name" class="button">{{ user.name }} {{ user.lastName }}</span>
     <button class="button" (click)="navugateTo('/cart')">Cart</button>
@@ -10,7 +10,7 @@
     <button class="button" (click)="authService.logOut()">Sign out</button>
   </div>
 
-  <div *ngIf="!(authService.user | async)">
+  <div class="header" *ngIf="!(authService.user | async)">
     <button class="button" (click)="navugateTo('/')">Home</button>
     <button class="button" (click)="navugateTo('/signin')">Sign in</button>
     <button class="button" (click)="navugateTo('/signup')">Sing up</button>
