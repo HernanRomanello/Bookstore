@@ -31,6 +31,9 @@ export class SearchBooksComponent implements OnInit, OnDestroy {
   ) {
     this.discountSub = this.authService.user.subscribe((user) => {
       this.authService.priceDiscount = user?.priceDiscount || 1;
+      if (this.authService.priceDiscount != 1) {
+        this.authService.priceDiscount = 1 - this.authService.priceDiscount;
+      }
     });
   }
 
