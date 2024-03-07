@@ -46,6 +46,7 @@ export class BookPageComponent implements OnInit, OnDestroy {
     if (navigateToCart) {
       this.router.navigate(['/cart']);
     } else {
+      alert('You added this item to the Cart');
     }
   }
 }
