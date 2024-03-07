@@ -19,7 +19,7 @@ export class SearchBooksComponent implements OnInit {
   booksFromlocalStorage: book[] = []; // This should be an array of book objects
 
   booksFirstIndex: number = 0;
-  booksLastIndex: number = 3;
+  booksLastIndex: number = 8;
   prevButtonActive: boolean = false;
   nextButtonActive: boolean = true;
   discount: number = this.authService.priceDiscount;
@@ -98,21 +98,21 @@ export class SearchBooksComponent implements OnInit {
   }
 
   prevPage() {
-    this.booksFirstIndex -= 3;
-    this.booksLastIndex -= 3;
+    this.booksFirstIndex -= 8;
+    this.booksLastIndex -= 8;
     this.hideButtons();
     window.scrollTo(0, 0);
   }
   nextPage() {
-    this.booksFirstIndex += 3;
-    this.booksLastIndex += 3;
+    this.booksFirstIndex += 8;
+    this.booksLastIndex += 8;
     this.hideButtons();
     window.scrollTo(0, 0);
   }
 
   goToPage(pageNumber: number) {
-    this.booksLastIndex = pageNumber * 3;
-    this.booksFirstIndex = this.booksLastIndex - 3;
+    this.booksLastIndex = pageNumber * 8;
+    this.booksFirstIndex = this.booksLastIndex - 8;
     this.hideButtons();
     window.scrollTo(0, 0);
   }
