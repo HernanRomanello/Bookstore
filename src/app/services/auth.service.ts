@@ -5,7 +5,7 @@ import {
   afterRender,
 } from '@angular/core';
 import { User } from '../shared/models/user';
-import { from } from 'rxjs';
+import { BehaviorSubject, Subject, from } from 'rxjs';
 import {
   Auth,
   createUserWithEmailAndPassword,
@@ -20,33 +20,29 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-  user: User | null = null;
+  user = new BehaviorSubject<User | null | undefined>(undefined);
   errors: Set<string> = new Set<string>();
   priceDiscount: number = 1;
   constructor(private auth: Auth, private database: Database) {
     onAuthStateChanged(this.auth, async (userAuth) => {
       if (userAuth) {
         const userRef = ref(this.database, `users/${userAuth.uid}`);
-
         try {
           const user = await get(userRef);
-          this.user = user.val();
-          console.log(this.user);
+          this.user.next(user.val());
         } catch (e) {}
       } else {
-        this.user = null;
+        this.user.next(null);
       }
     });
   }
 
   async updateUser(user: Partial<User>) {
-    if (!this.user) return false;
-
+    if (!this.user.value) return false;
     const newUserDoc = { ...this.user, ...user };
-
-    const userRef = ref(this.database, `users/${this.user.id}`);
+    const userRef = ref(this.database, `users/${this.user.value.id}`);
     await set(userRef, newUserDoc);
-    this.user = newUserDoc;
+    this.user.next(newUserDoc as User);
     return true;
   }
 
@@ -75,7 +71,7 @@ export class AuthService {
       const userRef = ref(this.database, `users/${credentials.user.uid}`);
       user.id = credentials.user.uid;
       await set(userRef, user);
-      this.user = user;
+      this.user.next(user);
       return true;
     } catch (e: any) {
       this.errors.add(e.message);
@@ -84,7 +80,8 @@ export class AuthService {
   }
 
   isAdmin() {
-    return this.user?.isAdmin;
+    if (!this.user.value) return false;
+    return this.user.value.isAdmin;
   }
 
   clearErrors() {

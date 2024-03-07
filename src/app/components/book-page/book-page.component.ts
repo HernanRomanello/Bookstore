@@ -1,29 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { book } from '../../shared/models/book';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BooksService } from '../../services/books/books.service';
 import { CartService } from '../../services/cart/cart.service';
 import { CartItem } from '../../shared/models/cartItem';
 import { AuthService } from '../../services/auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-book-page',
   templateUrl: './book-page.component.html',
   styleUrl: './book-page.component.css',
 })
-export class BookPageComponent implements OnInit {
+export class BookPageComponent implements OnInit, OnDestroy {
   book!: book;
-  discount: number = 1;
+  discountSub: Subscription | undefined;
   constructor(
     private route: ActivatedRoute,
     private bookService: BooksService,
     private cartService: CartService,
     private router: Router,
-    private authService: AuthService
+    public authService: AuthService
   ) {
-    if (this.authService.user) {
-      this.discount = this.authService.user.priceDiscount || 1;
-    }
+    this.discountSub = this.authService.user.subscribe((user) => {
+      this.authService.priceDiscount = user?.priceDiscount || 1;
+    });
     this.route.params.subscribe((params) => {
       if (params['id']) {
         console.log(params['id']);
@@ -31,6 +32,11 @@ export class BookPageComponent implements OnInit {
         console.log(this.book);
       }
     });
+  }
+  ngOnDestroy(): void {
+    if (this.discountSub) {
+      this.discountSub.unsubscribe();
+    }
   }
 
   ngOnInit(): void {}

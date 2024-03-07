@@ -10,10 +10,13 @@
     <div class="book-info">
       <h2 class="title">Getting More</h2>
       <p class="author">{{ book.author }}</p>
-      <p class="price">{{ book.price * discount | currency }}</p>
+      <p class="price">
+        {{ book.price * authService.priceDiscount | currency }}
+      </p>
       <p class="description">
         {{ book.summary }}
       </p>
+      s
       <p><strong>Pages:</strong> {{ book.pages }}</p>
       <p><strong>Published Date:</strong> {{ book.publishedDate }}</p>
       <p><strong>Language:</strong> {{ book.language }}</p>

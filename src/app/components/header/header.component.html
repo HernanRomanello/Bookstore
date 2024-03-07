@@ -1,24 +1,21 @@
 <header class="header">
-  <button class="button" (click)="navugateTo('/')">Home</button>
-
-  @if(authService.user) {
-  <div id="name" class="button">
-    {{ authService.user.name }} {{ authService.user.lastName }}
-  </div>
-  <button class="button" (click)="navugateTo('/cart')">Cart</button>
-  @if(authService.isAdmin()) {
-  <button class="button" (click)="navugateTo('/admin')">Admin</button>
-  }
-  <button class="button" (click)="navugateTo('/profile')">Profile</button>
-  <button class="button" (click)="authService.logOut()">Sign out</button>
-  }@else {
-  <div>
+  <div *ngIf="authService.user | async as user">
+    <button class="button" (click)="navugateTo('/')">Home</button>
+    <span id="name" class="button">{{ user.name }} {{ user.lastName }}</span>
     <button class="button" (click)="navugateTo('/cart')">Cart</button>
+    @if(authService.isAdmin()) {
+    <button class="button" (click)="navugateTo('/admin')">Admin</button>
+    }
+    <button class="button" (click)="navugateTo('/profile')">Profile</button>
+    <button class="button" (click)="authService.logOut()">Sign out</button>
+  </div>
 
+  <div *ngIf="!(authService.user | async)">
+    <button class="button" (click)="navugateTo('/')">Home</button>
     <button class="button" (click)="navugateTo('/signin')">Sign in</button>
     <button class="button" (click)="navugateTo('/signup')">Sing up</button>
+    <button class="button" (click)="navugateTo('/cart')">Cart</button>
   </div>
-  }
 </header>
 <div class="main-pic header">
   <img class="mainWebPic-img" src="{{ mainWebPic }}" alt="" />

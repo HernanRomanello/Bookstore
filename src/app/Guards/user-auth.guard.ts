@@ -1,14 +1,20 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { filter, first, map, take } from 'rxjs';
 
 export const userAuthGuard: CanActivateFn = (route, state) => {
   const authService = inject(AuthService);
   const router = inject(Router);
-  // if (!authService.user) {
-  //   router.navigate(['/signin']);
-  //   alert('You must be logged in to access this page');
-  //   return false;
-  // }
-  return true;
+  return authService.user.pipe(
+    filter((user) => user !== undefined), // Ensure the subscription is automatically unsubscribed after the first emission
+    first(), // Ensure the subscription is automatically unsubscribed after the first emission
+    map((user) => {
+      if (!user) {
+        router.navigate(['/']);
+        return false;
+      }
+      return true;
+    })
+  );
 };

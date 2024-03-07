@@ -14,6 +14,7 @@ import { CartPageComponent } from './components/cart-page/cart-page.component';
 import { AdminBooklistComponent } from './components/Admin-Panel/admin-booklist/admin-booklist.component';
 import { AdminAddbookComponent } from './components/Admin-Panel/admin-addbook/admin-addbook.component';
 import { UpdateUsersDiscountComponent } from './components/Admin-Panel/update-users-discount/update-users-discount.component';
+import { userAuthAlreadyLoggedGuard } from './Guards/user-auth-already-logged.guard';
 
 const routes: Routes = [
   {
@@ -37,14 +38,14 @@ const routes: Routes = [
     component: SigninComponent,
     title: 'Sign in',
     // resolve: { user: usersResolver },
-    canActivate: [userAuthGuard],
+    canActivate: [userAuthAlreadyLoggedGuard],
   },
   {
     path: 'signup',
     component: SignupComponent,
     title: 'Sign up',
     // resolve: { user: usersResolver },
-    canActivate: [userAuthGuard],
+    canActivate: [userAuthAlreadyLoggedGuard],
   },
 
   {
@@ -55,7 +56,7 @@ const routes: Routes = [
 
   {
     path: 'admin',
-    // canActivate: [adminAuthGuard],
+    canActivate: [adminAuthGuard],
     children: [
       {
         path: '',

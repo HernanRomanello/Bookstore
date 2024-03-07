@@ -1,50 +1,50 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from '../../shared/models/user';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css',
 })
-export class ProfileComponent {
-  user: User | null = null;
+export class ProfileComponent implements OnDestroy {
   isEditing: boolean = false;
+  editForm!: FormGroup;
+  userSub: Subscription | undefined;
+
   constructor(
     public authService: AuthService,
     private formBuilder: FormBuilder
   ) {
-    this.user = this.authService.user;
+    this.userSub = this.authService.user.subscribe((user) => {
+      if (user) {
+        this.editForm = this.formBuilder.group({
+          username: this.formBuilder.control(
+            user.username,
+            Validators.required
+          ),
+          name: this.formBuilder.control(user.name, Validators.required),
+          lastname: this.formBuilder.control(
+            user.lastName,
+            Validators.required
+          ),
+          email: this.formBuilder.control(user.email, [
+            Validators.required,
+            Validators.email,
+          ]),
+          age: this.formBuilder.control(user.age),
+          address: this.formBuilder.control(user.address),
+          phoneNumber: this.formBuilder.control(user.phoneNumber),
+        });
+      }
+    });
   }
 
-  editForm!: FormGroup;
-
-  ngOnInit(): void {
-    if (this.authService.user) {
-      this.editForm = this.formBuilder.group({
-        username: this.formBuilder.control(
-          this.authService.user.username,
-          Validators.required
-        ),
-        name: this.formBuilder.control(
-          this.authService.user.name,
-          Validators.required
-        ),
-        lastname: this.formBuilder.control(
-          this.authService.user.lastName,
-          Validators.required
-        ),
-        email: this.formBuilder.control(this.authService.user.email, [
-          Validators.required,
-          Validators.email,
-        ]),
-        age: this.formBuilder.control(this.authService.user.age),
-        address: this.formBuilder.control(this.authService.user.address),
-        phoneNumber: this.formBuilder.control(
-          this.authService.user.phoneNumber
-        ),
-      });
+  ngOnDestroy(): void {
+    if (this.userSub) {
+      this.userSub.unsubscribe();
     }
   }
 
@@ -67,7 +67,6 @@ export class ProfileComponent {
       phoneNumber,
     });
     this.isEditing = !this.isEditing;
-    this.user = this.authService.user;
     alert('Changes saved successfully');
   }
 

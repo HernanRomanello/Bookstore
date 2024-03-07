@@ -1,33 +1,33 @@
-<h1>{{ user?.name }} {{ user?.lastName }} Profile</h1>
-<div class="profile-container">
+<div class="profile-container" *ngIf="authService.user | async as user">
+  <h1>{{ user.name }} {{ user.lastName }} Profile</h1>
   <div class="profile-details" *ngIf="!isEditing">
     <div class="detail">
       <span class="label">Name:</span>
-      <span class="value">{{ authService.user?.name }}</span>
+      <span class="value">{{ user.name }}</span>
     </div>
     <div class="detail">
       <span class="label">Last Name:</span>
-      <span class="value">{{ authService.user?.lastName }}</span>
+      <span class="value">{{ user.lastName }}</span>
     </div>
     <div class="detail">
       <span class="label">Username:</span>
-      <span class="value">{{ authService.user?.username }}</span>
+      <span class="value">{{ user.username }}</span>
     </div>
     <div class="detail">
       <span class="label">Email:</span>
-      <span class="value">{{ authService.user?.email }}</span>
+      <span class="value">{{ user.email }}</span>
     </div>
     <div class="detail">
       <span class="label">Age:</span>
-      <span class="value">{{ authService.user?.age }}</span>
+      <span class="value">{{ user.age }}</span>
     </div>
     <div class="detail">
       <span class="label">Address:</span>
-      <span class="value">{{ authService.user?.address }}</span>
+      <span class="value">{{ user.address }}</span>
     </div>
     <div class="detail">
       <span class="label">Phone Number:</span>
-      <span class="value">{{ authService.user?.phoneNumber }}</span>
+      <span class="value">{{ user.phoneNumber }}</span>
     </div>
     <div class="button-container">
       <button class="edit-button" (click)="editProfile()">Edit Profile</button>

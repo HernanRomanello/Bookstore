@@ -1,25 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CartService } from '../../services/cart/cart.service';
 import { Cart } from '../../shared/models/cart';
 import { CartItem } from '../../shared/models/cartItem';
 import { AuthService } from '../../services/auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-cart-page',
   templateUrl: './cart-page.component.html',
   styleUrl: './cart-page.component.css',
 })
-export class CartPageComponent implements OnInit {
+export class CartPageComponent implements OnInit, OnDestroy {
   cart!: Cart;
-  discount: number = 1;
-
+  discountSub: Subscription | undefined;
   constructor(
     private cartServise: CartService,
-    private authService: AuthService
+    public authService: AuthService
   ) {
     this.setCart();
-    if (this.authService.user) {
-      this.discount = this.authService.user.priceDiscount || 1;
+    this.discountSub = this.authService.user.subscribe((user) => {
+      this.authService.priceDiscount = user?.priceDiscount || 1;
+    });
+  }
+  ngOnDestroy(): void {
+    if (this.discountSub) {
+      this.discountSub.unsubscribe();
     }
   }
   removeFromCart(CartItem: CartItem) {

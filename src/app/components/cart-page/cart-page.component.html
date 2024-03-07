@@ -34,7 +34,9 @@
           <div>
             <p class="price item">
               {{
-                cartItem.book.price * +quantityInput.value * discount | currency
+                cartItem.book.price *
+                  +quantityInput.value *
+                  authService.priceDiscount | currency
               }}
             </p>
           </div>
@@ -53,7 +55,9 @@
     <div class="checkout">
       <div class="books-count">Count :{{ cart.totalItems }}</div>
       <div class="total-price">
-        Total Price :{{ (cart.totalPrice * discount).toFixed(2) | currency }}
+        Total Price :{{
+          (cart.totalPrice * authService.priceDiscount).toFixed(2) | currency
+        }}
       </div>
     </div>
   </div>

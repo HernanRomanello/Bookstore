@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, afterNextRender } from '@angular/core';
 import { BooksService } from '../../services/books/books.service';
 import { AuthService } from '../../services/auth.service';
 import { book } from '../../shared/models/book';
-import { last } from 'rxjs';
+import { Subscription, last } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -10,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './search-books.component.html',
   styleUrl: './search-books.component.css',
 })
-export class SearchBooksComponent implements OnInit {
+export class SearchBooksComponent implements OnInit, OnDestroy {
   searchQuery: string = '';
   selectedFilter: string = 'title';
   minPrice: number = 0;
@@ -22,15 +22,21 @@ export class SearchBooksComponent implements OnInit {
   booksLastIndex: number = 8;
   prevButtonActive: boolean = false;
   nextButtonActive: boolean = true;
-  discount: number = this.authService.priceDiscount;
+  discountSub: Subscription | undefined;
   constructor(
     private booksservice: BooksService,
-    private authService: AuthService,
+    public authService: AuthService,
     private route: ActivatedRoute,
     private router: Router
   ) {
-    if (this.authService.user) {
-      this.discount = this.authService.user.priceDiscount || 1;
+    this.discountSub = this.authService.user.subscribe((user) => {
+      this.authService.priceDiscount = user?.priceDiscount || 1;
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (this.discountSub) {
+      this.discountSub.unsubscribe();
     }
   }
 
@@ -80,10 +86,12 @@ export class SearchBooksComponent implements OnInit {
       });
     });
   }
+
   saveBooksToLocal(): void {
     // Serialize books array to JSON string and save to local storage
     localStorage.setItem('books', JSON.stringify(this.books));
   }
+
   searchBooks(
     searchQuery: string,
     selectedFilter: string,
