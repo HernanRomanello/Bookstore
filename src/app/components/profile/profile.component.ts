@@ -67,6 +67,7 @@ export class ProfileComponent implements OnDestroy {
       phoneNumber,
     });
     this.isEditing = !this.isEditing;
+
     alert('Changes saved successfully');
   }
 

@@ -39,7 +39,7 @@ export class AuthService {
 
   async updateUser(user: Partial<User>) {
     if (!this.user.value) return false;
-    const newUserDoc = { ...this.user, ...user };
+    const newUserDoc = { ...this.user.value, ...user };
     const userRef = ref(this.database, `users/${this.user.value.id}`);
     await set(userRef, newUserDoc);
     this.user.next(newUserDoc as User);

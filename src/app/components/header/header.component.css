@@ -16,7 +16,7 @@
 .header {
   display: flex;
   width: 100%;
-  justify-content: space-around;
+  justify-content: space-evenly !important;
   align-items: center;
 }
 
