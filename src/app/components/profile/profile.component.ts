@@ -75,7 +75,7 @@ export class ProfileComponent implements OnDestroy {
     this.isEditing = !this.isEditing;
   }
 
-  // saveProfile(): void {
-  //   // You can implement logic for saving the edited profile here
-  // }
+  deleteMyProfile(user: User) {
+    this.authService.deleteUser(user);
+  }
 }

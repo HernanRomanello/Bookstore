@@ -23,6 +23,7 @@ export class SearchBooksComponent implements OnInit, OnDestroy {
   prevButtonActive: boolean = false;
   nextButtonActive: boolean = true;
   discountSub: Subscription | undefined;
+  priceDiscount: number = 1;
   constructor(
     private booksservice: BooksService,
     public authService: AuthService,

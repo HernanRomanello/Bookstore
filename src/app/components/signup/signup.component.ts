@@ -24,7 +24,7 @@ export class SignupComponent {
   ) {}
 
   signupForm!: FormGroup;
-  discount: number = 0.8;
+  discount: number = 0.2;
 
   ngOnInit(): void {
     this.signupForm = this.formbuilder.group({
