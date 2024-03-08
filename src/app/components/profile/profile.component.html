@@ -31,7 +31,7 @@
     </div>
     <div class="button-container">
       <button class="edit-button" (click)="editProfile()">Edit Profile</button>
-      <button class="edit-button" (click)="deleteMyProfile(user)">
+      <button class="edit-button" (click)="authService.deleteUser(user)">
         Delete my Profile
       </button>
       <button class="save-button" *ngIf="isEditing">Save</button>

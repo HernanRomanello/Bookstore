@@ -74,8 +74,4 @@ export class ProfileComponent implements OnDestroy {
   editProfile(): void {
     this.isEditing = !this.isEditing;
   }
-
-  deleteMyProfile(user: User) {
-    this.authService.deleteUser(user);
-  }
 }

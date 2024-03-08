@@ -16,6 +16,7 @@ import {
 } from '@angular/fire/auth';
 import { Database, ref, set, get } from '@angular/fire/database';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -24,7 +25,11 @@ export class AuthService {
   user = new BehaviorSubject<User | null | undefined>(undefined);
   errors: Set<string> = new Set<string>();
   priceDiscount: number = 1;
-  constructor(private auth: Auth, private database: Database) {
+  constructor(
+    private auth: Auth,
+    private database: Database,
+    private router: Router
+  ) {
     onAuthStateChanged(this.auth, async (userAuth) => {
       if (userAuth) {
         const userRef = ref(this.database, `users/${userAuth.uid}`);
@@ -111,6 +116,8 @@ export class AuthService {
 
   deleteUser(user: User) {
     const userRef = ref(this.database, `users/${user.id}`);
+    alert('User deleted successfully');
+    this.router.navigate(['/']);
     return set(userRef, null);
 
     // deleteUser(user).then(() => {
