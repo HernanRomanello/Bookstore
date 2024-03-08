@@ -12,6 +12,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
+  deleteUser,
 } from '@angular/fire/auth';
 import { Database, ref, set, get } from '@angular/fire/database';
 import { Observable } from 'rxjs';
@@ -107,4 +108,24 @@ export class AuthService {
     }
     return false;
   }
+
+  deleteUser(user: User) {
+    const userRef = ref(this.database, `users/${user.id}`);
+    return set(userRef, null);
+
+    // deleteUser(user).then(() => {
+    //   // User deleted.
+    // }).catch((error) => {
+    //   // An error ocurred
+    //   // ...
+    // });
+  }
+
+  /* deleteUser(user).then(() => {
+  // User deleted.
+}).catch((error) => {
+  // An error ocurred
+  // ...
+});
+ */
 }
