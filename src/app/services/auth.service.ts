@@ -20,7 +20,6 @@ import { Router } from '@angular/router';
 export class AuthService {
   user = new BehaviorSubject<User | null | undefined>(undefined);
   userAuth: FirebaseUser | undefined | null;
-  errors: Set<string> = new Set<string>();
   priceDiscount: number = 1;
   constructor(
     private auth: Auth,
@@ -34,7 +33,9 @@ export class AuthService {
         try {
           const user = await get(userRef);
           this.user.next(user.val());
-        } catch (e) {}
+        } catch (error) {
+          console.error(error);
+        }
       } else {
         this.user.next(null);
       }
@@ -78,7 +79,7 @@ export class AuthService {
       this.user.next(user);
       return true;
     } catch (error: any) {
-      this.errors.add(error.message);
+      console.error(error);
     }
     return false;
   }
@@ -93,15 +94,17 @@ export class AuthService {
       await signOut(this.auth);
       this.user.next(null);
       this.router.navigate(['/signin']);
-    } catch (e) {}
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   async login(email: string, password: string) {
     try {
       await signInWithEmailAndPassword(this.auth, email, password);
       return true;
-    } catch (e: any) {
-      this.errors.add(e.message);
+    } catch (error: any) {
+      console.error(error);
     }
     return false;
   }

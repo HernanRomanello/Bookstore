@@ -16,7 +16,6 @@ import { AdminDashboardComponent } from './components/Admin-Panel/admin-dashboar
 import { ProfileComponent } from './components/profile/profile.component';
 import { BookPageComponent } from './components/book-page/book-page.component';
 import { CartPageComponent } from './components/cart-page/cart-page.component';
-import { CartService } from './services/cart/cart.service';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getDatabase, provideDatabase } from '@angular/fire/database';
@@ -52,7 +51,7 @@ import { UpdateUsersDiscountComponent } from './components/Admin-Panel/update-us
     provideDatabase(() => getDatabase()),
     provideStorage(() => getStorage()),
   ],
-  providers: [provideClientHydration(), CartService],
+  providers: [provideClientHydration()],
   bootstrap: [AppComponent],
   exports: [],
 })
