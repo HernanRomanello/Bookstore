@@ -28,7 +28,7 @@
   width: 100%;
   padding: 5px 20px;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
 }
 
@@ -41,7 +41,6 @@ button {
   border-radius: 4px;
 }
 
-input[type="number"],
 input[type="text"] {
   padding: 10px;
   display: flex;
@@ -90,10 +89,11 @@ button {
   border: 1px solid #ccc;
   border-radius: 4px;
   color: aliceblue;
+  cursor: pointer !important;
   background-color: rgb(19, 25, 33);
-  .option {
-    background-color: tomato;
+  .option:hover {
     cursor: pointer !important;
+    background-color: tomato;
   }
 }
 
@@ -120,10 +120,37 @@ button {
   padding: 10px;
 }
 
-@media screen and (max-width: 1050px) {
+@media screen and (max-width: 600px) {
   #search {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+}
+
+#searchInput {
+  width: 25rem !important;
+  @media screen and (max-width: 710px) {
+    width: 20rem !important;
+  }
+  @media screen and (max-width: 455px) {
+    width: 15rem !important;
+  }
+  @media screen and (max-width: 370px) {
+    width: 10rem !important;
+  }
+  @media screen and (max-width: 290px) {
+    width: 5rem !important;
+  }
+}
+
+#search-button:hover {
+  transform: scale(1.04);
+}
+
+#search-button {
+  width: 7rem;
+  @media screen and (max-width: 600px) {
+    width: 10rem;
   }
 }

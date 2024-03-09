@@ -3,6 +3,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { BooksService } from '../../../services/books/books.service';
 import { CommonModule } from '@angular/common';
 import { book } from '../../../shared/models/book';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-booklist',
@@ -12,16 +13,10 @@ import { book } from '../../../shared/models/book';
     '../../cart-page/cart-page.component.css',
   ],
 })
-export class AdminBooklistComponent implements OnInit {
-  // adminService = inject(AdminService);
-  books: book[] = [];
-  constructor(private booksService: BooksService) {}
+export class AdminBooklistComponent {
+  constructor(public booksService: BooksService, private router: Router) {}
 
-  ngOnInit(): void {
-    const storedData = localStorage.getItem('books');
-    if (storedData) {
-      this.books = JSON.parse(storedData); // Parse JSON string to array
-      console.log(this.books);
-    }
+  moveEditBook(book: book) {
+    this.router.navigate(['admin', 'addbook', book.id]);
   }
 }

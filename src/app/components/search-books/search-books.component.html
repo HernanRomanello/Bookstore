@@ -1,14 +1,7 @@
 <section id="search" class="search-container">
   <div class="part">
     <input
-      (keyup.enter)="
-        searchBooks(
-          searchQuery.value,
-          filter.value,
-          +minPriceInput.value,
-          +maxPriceInput.value
-        )
-      "
+      (keyup.enter)="searchBooks(searchQuery.value, filter.value)"
       type="text"
       id="searchInput"
       placeholder="Search books..."
@@ -20,35 +13,18 @@
       <option class="option" value="author">Author</option>
     </select>
   </div>
-  <div class="part">
-    <div class="price-search">
-      <label for="minPrice">Min Price:</label>
-      <input type="number" id="minPrice" min="0" step="1" #minPriceInput />
-    </div>
-  </div>
-  <div class="part">
-    <div class="price-search">
-      <label for="maxPrice">Max Price:</label>
-      <input type="number" id="maxPrice" min="0" step="1" #maxPriceInput />
-    </div>
-  </div>
+
   <div class="part">
     <button
-      (click)="
-        searchBooks(
-          searchQuery.value,
-          filter.value,
-          +minPriceInput.value,
-          +maxPriceInput.value
-        )
-      "
+      id="search-button"
+      (click)="searchBooks(searchQuery.value, filter.value)"
     >
       Search
     </button>
   </div>
 </section>
 
-<div class="books-list">
+<div class="books-list" *ngIf="$books | async as books">
   <div
     *ngFor="let book of books.slice(booksFirstIndex, booksLastIndex)"
     class="book"
@@ -74,9 +50,11 @@
   >
     Prev
   </button>
-  <button class="navigation-button" (click)="goToPage(+1)">1</button>
-  <button class="navigation-button" (click)="goToPage(+2)">2</button>
-  <button class="navigation-button" (click)="goToPage(+3)">3</button>
+  @for (page of bookPagingIndices; track $index) {
+  <button class="navigation-button" (click)="goToPage(page)">
+    {{ page + 1 }}
+  </button>
+  }
   <button
     *ngIf="nextButtonActive"
     class="navigation-button"

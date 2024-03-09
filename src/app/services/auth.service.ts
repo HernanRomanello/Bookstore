@@ -1,11 +1,6 @@
-import {
-  AfterViewInit,
-  Injectable,
-  afterNextRender,
-  afterRender,
-} from '@angular/core';
+import { Injectable } from '@angular/core';
 import { User } from '../shared/models/user';
-import { BehaviorSubject, Subject, from } from 'rxjs';
+import { BehaviorSubject, from } from 'rxjs';
 import {
   Auth,
   createUserWithEmailAndPassword,
@@ -13,8 +8,9 @@ import {
   signOut,
   onAuthStateChanged,
   deleteUser,
+  User as FirebaseUser,
 } from '@angular/fire/auth';
-import { Database, ref, set, get } from '@angular/fire/database';
+import { Database, ref, set, get, remove } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -23,7 +19,8 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   user = new BehaviorSubject<User | null | undefined>(undefined);
-  errors: Set<string> = new Set<string>();
+  userAuth: FirebaseUser | undefined | null; // This should be a FirebaseUser object
+  errors: Set<string> = new Set<string>(); // This should be a Set of strings
   priceDiscount: number = 1;
   constructor(
     private auth: Auth,
@@ -31,6 +28,7 @@ export class AuthService {
     private router: Router
   ) {
     onAuthStateChanged(this.auth, async (userAuth) => {
+      this.userAuth = userAuth;
       if (userAuth) {
         const userRef = ref(this.database, `users/${userAuth.uid}`);
         try {
@@ -79,8 +77,8 @@ export class AuthService {
       await set(userRef, user);
       this.user.next(user);
       return true;
-    } catch (e: any) {
-      this.errors.add(e.message);
+    } catch (error: any) {
+      this.errors.add(error.message);
     }
     return false;
   }
@@ -90,17 +88,11 @@ export class AuthService {
     return this.user.value.isAdmin;
   }
 
-  clearErrors() {
-    this.errors.clear();
-  }
-
-  hasErrors() {
-    return this.errors.size > 0;
-  }
-
   async logOut() {
     try {
       await signOut(this.auth);
+      this.user.next(null);
+      this.router.navigate(['/signin']);
     } catch (e) {}
   }
 
@@ -114,25 +106,14 @@ export class AuthService {
     return false;
   }
 
-  deleteUser(user: User) {
+  async deleteUser(user: User) {
     const userRef = ref(this.database, `users/${user.id}`);
-    alert('User deleted successfully');
     this.router.navigate(['/']);
-    return set(userRef, null);
-
-    // deleteUser(user).then(() => {
-    //   // User deleted.
-    // }).catch((error) => {
-    //   // An error ocurred
-    //   // ...
-    // });
+    await remove(userRef);
+    if (this.userAuth) {
+      await deleteUser(this.userAuth);
+    }
+    this.logOut();
+    alert('User deleted successfully');
   }
-
-  /* deleteUser(user).then(() => {
-  // User deleted.
-}).catch((error) => {
-  // An error ocurred
-  // ...
-});
- */
 }

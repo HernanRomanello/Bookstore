@@ -1,19 +1,56 @@
-import { Injectable } from '@angular/core';
+import { Injectable, afterNextRender } from '@angular/core';
 import { book } from '../../shared/models/book';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BooksService {
-  constructor(private router: Router) {}
+  books: BehaviorSubject<book[]> = new BehaviorSubject<book[]>([]);
+  constructor(private router: Router) {
+    afterNextRender(() => {
+      this.books.next(this.getAllBooks());
+    });
+  }
+
+  updateBook(id: number, book: Partial<book>): void {
+    const books = this.books.getValue();
+    const bookIndex = this.books.getValue().findIndex((book) => book.id === id);
+    books[bookIndex] = { ...books[bookIndex], ...book };
+    this.saveBooksToLocal(books);
+  }
+
+  deleteBook(id: number): void {
+    this.books.next(this.books.getValue().filter((book) => book.id !== id));
+    this.saveBooksToLocal(this.books.value);
+  }
+
+  insertBook(book: book): void {
+    this.books.next([...this.books.getValue(), book]);
+    this.saveBooksToLocal(this.books.value);
+  }
 
   getBookById(id: number): book {
-    return this.getAllBooks().find((book) => book.id === id)!;
+    return this.books.getValue().find((book) => book.id === id)!;
+  }
+
+  getBooksFromLocal() {
+    return JSON.parse(localStorage.getItem('books') || '[]');
+  }
+
+  saveBooksToLocal(books: book[]): void {
+    // Serialize books array to JSON string and save to local storage
+    localStorage.setItem('books', JSON.stringify(books));
+    this.books.next(books);
   }
 
   getAllBooks(): book[] {
-    return [
+    const books = this.getBooksFromLocal();
+    if (books.length > 0) {
+      return books;
+    }
+    const allBooks = [
       {
         id: 1,
         title: 'The Women',
@@ -347,5 +384,7 @@ export class BooksService {
           'Haunted by the tragic loss of a dear friend, Maya has sworn off alcohol, determined to honor her friends memory. Her world takes an unexpected turn when she crosses paths with Tom, a charming Irishman who owns a non-profit organization collaborating with Mayas marketing agency.',
       },
     ];
+    this.saveBooksToLocal(allBooks);
+    return allBooks;
   }
 }

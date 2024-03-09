@@ -1,18 +1,28 @@
-@for (book of books; track $index) {
-<div class="container">
-  <div class="">
-    <ul class="items">
-      <li>
-        <div class="item">
-          <img [src]="book.coverImage" [alt]="book.title" />
-        </div>
-        <h1 class="item">{{ book.title }}</h1>
-        <div class="item quantity">Author: {{ book.author }}</div>
-        <div class="price item">Price: {{ book.price | currency }}</div>
-        <button class="remove-button item">Remove</button>
-      </li>
-    </ul>
+<div *ngIf="booksService.books | async as books">
+  @for (book of books; track $index) {
+  <div class="container">
+    <div class="">
+      <ul class="items">
+        <li>
+          <div class="item">
+            <img
+              [src]="book.coverImage"
+              [alt]="book.title"
+              (click)="moveEditBook(book)"
+            />
+          </div>
+          <h1 class="item">{{ book.title }}</h1>
+          <div class="item quantity">Author: {{ book.author }}</div>
+          <div class="price item">Price: {{ book.price | currency }}</div>
+          <button
+            class="remove-button item"
+            (click)="booksService.deleteBook(book.id)"
+          >
+            Remove
+          </button>
+        </li>
+      </ul>
+    </div>
   </div>
+  }
 </div>
-
-}

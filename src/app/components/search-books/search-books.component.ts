@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit, afterNextRender } from '@angular/core';
 import { BooksService } from '../../services/books/books.service';
 import { AuthService } from '../../services/auth.service';
 import { book } from '../../shared/models/book';
-import { Subscription, last } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription, filter, last } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -15,7 +15,8 @@ export class SearchBooksComponent implements OnInit, OnDestroy {
   selectedFilter: string = 'title';
   minPrice: number = 0;
   maxPrice: number = 0;
-  books: book[] = []; // This should be an array of book objects
+  $books = new BehaviorSubject<book[]>([]);
+
   booksFromlocalStorage: book[] = []; // This should be an array of book objects
 
   booksFirstIndex: number = 0;
@@ -23,7 +24,9 @@ export class SearchBooksComponent implements OnInit, OnDestroy {
   prevButtonActive: boolean = false;
   nextButtonActive: boolean = true;
   discountSub: Subscription | undefined;
+  booksSub: Subscription | undefined;
   priceDiscount: number = 1;
+  bookPagingIndices: number[] = [];
   constructor(
     private booksservice: BooksService,
     public authService: AuthService,
@@ -36,11 +39,20 @@ export class SearchBooksComponent implements OnInit, OnDestroy {
         this.authService.priceDiscount = 1 - this.authService.priceDiscount;
       }
     });
+    this.booksSub = this.$books.subscribe((books) => {
+      this.bookPagingIndices = [];
+      for (let i = 0; i < books.length / 8; i++) {
+        this.bookPagingIndices.push(i);
+      }
+    });
   }
 
   ngOnDestroy(): void {
     if (this.discountSub) {
       this.discountSub.unsubscribe();
+    }
+    if (this.booksSub) {
+      this.booksSub.unsubscribe();
     }
   }
 
@@ -51,7 +63,7 @@ export class SearchBooksComponent implements OnInit, OnDestroy {
       this.prevButtonActive = true;
     }
 
-    if (this.booksLastIndex >= this.books.length) {
+    if (this.booksLastIndex >= this.$books.getValue().length) {
       this.nextButtonActive = false;
     } else {
       this.nextButtonActive = true;
@@ -60,41 +72,28 @@ export class SearchBooksComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      this.route.params.subscribe((params) => {
-        if (params['title']) {
-          const searchTerm = params['title'].toLowerCase(); // Convert to lowercase for case-insensitive matching
-          this.books = this.booksservice.getAllBooks().filter((book) => {
-            return book.title.toLowerCase().includes(searchTerm);
-          });
-        } else if (params['author']) {
-          const searchAuthor = params['author'].toLowerCase(); // Convert to lowercase for case-insensitive matching
-          this.books = this.booksservice.getAllBooks().filter((book) => {
-            return book.author.toLowerCase().includes(searchAuthor);
-          });
-        } else {
-          this.books = this.booksservice.getAllBooks();
-          this.saveBooksToLocal();
-          const storedData = localStorage.getItem('books');
-          if (storedData) {
-            this.books = JSON.parse(storedData); // Parse JSON string to array
-          }
-        }
-        this.hideButtons(); // Ensure that the hideButtons function is called after updating the books array
-      });
+      const books = this.booksservice.getAllBooks();
+
+      if (params['title']) {
+        const searchTerm = params['title'].toLowerCase(); // Convert to lowercase for case-insensitive matching
+        this.$books.next(
+          books.filter((book) => book.title.toLowerCase().includes(searchTerm))
+        );
+      } else if (params['author']) {
+        const searchAuthor = params['author'].toLowerCase(); // Convert to lowercase for case-insensitive matching
+        this.$books.next(
+          books.filter((book) =>
+            book.author.toLowerCase().includes(searchAuthor)
+          )
+        );
+      } else {
+        this.$books.next(books);
+      }
+      this.hideButtons(); // Ensure that the hideButtons function is called after updating the books array
     });
   }
 
-  saveBooksToLocal(): void {
-    // Serialize books array to JSON string and save to local storage
-    localStorage.setItem('books', JSON.stringify(this.books));
-  }
-
-  searchBooks(
-    searchQuery: string,
-    selectedFilter: string,
-    minPrice: number,
-    maxPrice: number
-  ) {
+  searchBooks(searchQuery: string, selectedFilter: string) {
     if (selectedFilter === 'title') {
       this.router.navigate(['/searchtitle', searchQuery]);
     } else {
@@ -116,8 +115,8 @@ export class SearchBooksComponent implements OnInit, OnDestroy {
   }
 
   goToPage(pageNumber: number) {
-    this.booksLastIndex = pageNumber * 8;
-    this.booksFirstIndex = this.booksLastIndex - 8;
+    this.booksLastIndex = (pageNumber + 1) * 8;
+    this.booksFirstIndex = pageNumber * 8;
     this.hideButtons();
     window.scrollTo(0, 0);
   }

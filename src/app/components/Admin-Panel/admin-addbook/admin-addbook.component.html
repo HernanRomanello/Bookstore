@@ -1,5 +1,4 @@
 <div class="addbook">
-  <!-- <form [formGroup]="addBookForm"> -->
   <form [formGroup]="addBookForm">
     <div class="form-group">
       <label for="title">Title</label>
@@ -37,7 +36,7 @@
     <div class="form-group">
       <label for="coverImage">Cover Image</label>
       <input
-        type="file"
+        type="text"
         class="form-control"
         required
         id="coverImage"
@@ -109,7 +108,11 @@
         formControlName="summary"
       ></textarea>
     </div>
+    @if(edittingbook) {
+    <button class="btn btn-primary" (click)="onSubmit()">Save Changes</button>
 
-    <button class="btn btn-primary">Add Book</button>
+    }@else {
+    <button class="btn btn-primary" (click)="onSubmit()">Add Book</button>
+    }
   </form>
 </div>

@@ -12,7 +12,6 @@ import { SearchBooksComponent } from './components/search-books/search-books.com
 import { SignupComponent } from './components/signup/signup.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AdminloginComponent } from './components/Admin-Panel/adminlogin/adminlogin.component';
 import { AdminDashboardComponent } from './components/Admin-Panel/admin-dashboard/admin-dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { BookPageComponent } from './components/book-page/book-page.component';

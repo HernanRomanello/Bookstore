@@ -37,14 +37,12 @@ const routes: Routes = [
     path: 'signin',
     component: SigninComponent,
     title: 'Sign in',
-    // resolve: { user: usersResolver },
     canActivate: [userAuthAlreadyLoggedGuard],
   },
   {
     path: 'signup',
     component: SignupComponent,
     title: 'Sign up',
-    // resolve: { user: usersResolver },
     canActivate: [userAuthAlreadyLoggedGuard],
   },
 
@@ -68,7 +66,11 @@ const routes: Routes = [
         component: AdminBooklistComponent,
         title: 'Book List',
       },
-      { path: 'addbook', component: AdminAddbookComponent, title: 'Add Book' },
+      {
+        path: 'addbook/:id',
+        component: AdminAddbookComponent,
+        title: 'Add Book',
+      },
       {
         path: 'updatediscount',
         component: UpdateUsersDiscountComponent,

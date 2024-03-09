@@ -33,6 +33,5 @@ export class UpdateUsersDiscountComponent {
 
   updateDiscountRate(discountRate: number) {
     this.discount = discountRate;
-    // this.authService.updateUser({}); add fun that will update the discount rate for all users
   }
 }
