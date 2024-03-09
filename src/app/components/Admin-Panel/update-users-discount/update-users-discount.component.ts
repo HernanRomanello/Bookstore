@@ -20,9 +20,10 @@ export class UpdateUsersDiscountComponent {
   async saveDiscount(discountRate: number) {
     try {
       const usersRef = ref(this.database, 'users');
-      const users: { [id: string]: User } = (await get(usersRef)).val();
+      const users: { [name: string]: User } = (await get(usersRef)).val();
       for (const user in users) {
         users[user].priceDiscount = discountRate;
+        console.log(user);
       }
       await set(usersRef, users);
       this.discountRateEditable = !this.discountRateEditable;

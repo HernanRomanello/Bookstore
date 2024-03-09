@@ -64,7 +64,7 @@ export class SignupComponent {
     const name: string = this.signupForm.get('name')?.value;
     const lastName: string = this.signupForm.get('lastname')?.value;
 
-    const user: User = {
+    let user: User = {
       id: '',
       email,
       username,
@@ -73,7 +73,11 @@ export class SignupComponent {
       lastName,
       priceDiscount: this.discount,
     };
-    if (await this.authService.register(user, password)) {
+    const UserRgistered = await this.authService.register(user, password);
+    // if (await this.authService.register(user, password)) {
+    //   this.router.navigate(['/']);
+    // }
+    if (UserRgistered) {
       this.router.navigate(['/']);
     }
   }

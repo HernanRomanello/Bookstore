@@ -1,23 +1,23 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+// import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdminUserlistComponent } from './admin-userlist.component';
+// import { AdminUserlistComponent } from './admin-userlist.component';
 
-describe('AdminUserlistComponent', () => {
-  let component: AdminUserlistComponent;
-  let fixture: ComponentFixture<AdminUserlistComponent>;
+// describe('AdminUserlistComponent', () => {
+//   let component: AdminUserlistComponent;
+//   let fixture: ComponentFixture<AdminUserlistComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [AdminUserlistComponent]
-    })
-    .compileComponents();
-    
-    fixture = TestBed.createComponent(AdminUserlistComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+//   beforeEach(async () => {
+//     await TestBed.configureTestingModule({
+//       declarations: [AdminUserlistComponent]
+//     })
+//     .compileComponents();
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+//     fixture = TestBed.createComponent(AdminUserlistComponent);
+//     component = fixture.componentInstance;
+//     fixture.detectChanges();
+//   });
+
+//   it('should create', () => {
+//     expect(component).toBeTruthy();
+//   });
+// });

@@ -19,8 +19,8 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   user = new BehaviorSubject<User | null | undefined>(undefined);
-  userAuth: FirebaseUser | undefined | null; // This should be a FirebaseUser object
-  errors: Set<string> = new Set<string>(); // This should be a Set of strings
+  userAuth: FirebaseUser | undefined | null;
+  errors: Set<string> = new Set<string>();
   priceDiscount: number = 1;
   constructor(
     private auth: Auth,
@@ -71,7 +71,7 @@ export class AuthService {
       );
 
       if (!credentials.user) throw new Error('User not found');
-
+      alert('User registered successfully');
       const userRef = ref(this.database, `users/${credentials.user.uid}`);
       user.id = credentials.user.uid;
       await set(userRef, user);

@@ -10,7 +10,7 @@
   font-size: 16px;
   border: none;
   border-radius: 5px;
-  background-color: #4caf50; /* Green */
+  background-color: #4caf50;
   color: white;
   transition: background-color 0.3s ease;
   width: 60%;
@@ -24,9 +24,5 @@
 }
 
 .admin-actions button:hover {
-  background-color: #45a049; /* Darker Green */
-}
-
-.admin-actions button:focus {
-  outline: none;
+  background-color: #45a049;
 }
