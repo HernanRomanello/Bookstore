@@ -73,10 +73,8 @@ export class SignupComponent {
       lastName,
       priceDiscount: this.discount,
     };
-    const UserRgistered = await this.authService.register(user, password);
-    // if (await this.authService.register(user, password)) {
-    //   this.router.navigate(['/']);
-    // }
+    let UserRgistered = await this.authService.register(user, password);
+
     if (UserRgistered) {
       this.router.navigate(['/']);
     }
