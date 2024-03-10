@@ -33,7 +33,6 @@ export class CartPageComponent implements OnInit, OnDestroy {
   }
   changeQuantity(CartItem: CartItem, quantity: number) {
     this.cartServise.changeQuantity(CartItem.book.id, +quantity);
-    // console.log(quantity);
     this.setCart();
   }
   setCart() {

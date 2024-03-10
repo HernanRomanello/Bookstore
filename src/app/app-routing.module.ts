@@ -5,7 +5,6 @@ import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { Page404Component } from './components/page-404/page-404.component';
 import { adminAuthGuard } from './Guards/admin-auth.guard';
-import { AdminloginComponent } from './components/Admin-Panel/adminlogin/adminlogin.component';
 import { AdminDashboardComponent } from './components/Admin-Panel/admin-dashboard/admin-dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { userAuthGuard } from './Guards/user-auth.guard';

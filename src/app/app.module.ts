@@ -24,6 +24,7 @@ import { environment } from '../environments/environment.development';
 import { AdminAddbookComponent } from './components/Admin-Panel/admin-addbook/admin-addbook.component';
 import { AdminBooklistComponent } from './components/Admin-Panel/admin-booklist/admin-booklist.component';
 import { UpdateUsersDiscountComponent } from './components/Admin-Panel/update-users-discount/update-users-discount.component';
+import { CartService } from './services/cart/cart.service';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,7 @@ import { UpdateUsersDiscountComponent } from './components/Admin-Panel/update-us
     provideDatabase(() => getDatabase()),
     provideStorage(() => getStorage()),
   ],
-  providers: [provideClientHydration()],
+  providers: [provideClientHydration(), CartService],
   bootstrap: [AppComponent],
   exports: [],
 })
