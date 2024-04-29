@@ -1,0 +1,3 @@
+npm install @angular/fire
+npm install -g npm
+npm install
